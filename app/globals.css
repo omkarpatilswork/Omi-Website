@@ -56,19 +56,19 @@
 
 @layer components {
   .container-custom {
-    @apply max-w-5xl mx-auto px-5 md:px-8;
+    @apply max-w-5xl mx-auto px-4 md:px-5 lg:px-8;
   }
 
   .section {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-16 lg:py-24;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-medium mb-8 md:mb-12;
+    @apply text-3xl md:text-4xl lg:text-5xl font-medium mb-6 md:mb-8 lg:mb-12;
   }
 
   .card {
-    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-sm transition-all hover:shadow-md;
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/20 shadow-sm transition-all hover:shadow-md;
   }
 
   .collapsible-card {
@@ -84,7 +84,7 @@
   }
 
   .project-card {
-    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-sm transition-all hover:shadow-md h-full;
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-white/20 shadow-sm transition-all hover:shadow-md h-full;
   }
 
   .fade-in {
@@ -120,7 +120,7 @@
   }
 
   .skill-badge {
-    @apply flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105;
+    @apply flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 text-sm md:text-base;
   }
 
   .gradient-text {
@@ -176,5 +176,31 @@
 
   .image-grid-item:hover img {
     transform: scale(1.05);
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 768px) {
+    .timeline-item {
+      @apply text-center;
+    }
+
+    .portfolio-card {
+      @apply flex-col;
+    }
+
+    .skill-badge {
+      @apply text-xs px-2 py-1;
+    }
+  }
+
+  /* Touch-friendly interactions */
+  @media (hover: none) and (pointer: coarse) {
+    .hover-lift:hover {
+      transform: none;
+    }
+
+    .skill-badge:hover {
+      transform: none;
+    }
   }
 }

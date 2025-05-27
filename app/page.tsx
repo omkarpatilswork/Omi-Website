@@ -114,42 +114,44 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gray-100 text-gray-800 font-sans">
       {/* Navigation */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
-        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-6 py-3 shadow-sm">
+      <div className="fixed top-0 left-0 right-0 z-50 px-2 md:px-4 py-2 md:py-4">
+        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-3 md:px-6 py-2 md:py-3 shadow-sm">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold">
-              <div className="w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center text-white">O</div>
+            <Link href="/" className="text-xl md:text-2xl font-bold">
+              <div className="w-6 h-6 md:w-8 md:h-8 bg-gray-900 rounded-full flex items-center justify-center text-white text-sm md:text-base">
+                O
+              </div>
             </Link>
-            <div className="hidden md:flex items-center space-x-10">
-              <Link href="#" className="text-gray-700 hover:text-gray-900">
+            <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
+              <Link href="#" className="text-gray-700 hover:text-gray-900 text-sm">
                 about me
               </Link>
-              <Link href="#portfolio" className="text-gray-700 hover:text-gray-900">
+              <Link href="#portfolio" className="text-gray-700 hover:text-gray-900 text-sm">
                 product portfolio
               </Link>
-              <Link href="#experience" className="text-gray-700 hover:text-gray-900">
+              <Link href="#experience" className="text-gray-700 hover:text-gray-900 text-sm">
                 my work
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-gray-900">
+              <Link href="#contact" className="text-gray-700 hover:text-gray-900 text-sm">
                 reach out
               </Link>
               <a
                 href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
+                className="text-gray-700 hover:text-gray-900 text-sm"
               >
                 resume
               </a>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <a
                 href="mailto:omkarpatilswork@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-gray-900"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4 md:w-5 md:h-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
@@ -157,7 +159,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-gray-900"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
               </a>
               <a
                 href="https://github.com/omkarpatilswork"
@@ -165,7 +167,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-gray-900"
               >
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4 md:w-5 md:h-5" />
               </a>
             </div>
           </div>
@@ -173,7 +175,7 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4">
+      <section className="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-16 md:pb-20 px-4">
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{ opacity }}
@@ -189,7 +191,7 @@ export default function HomePage() {
         </motion.div>
 
         <div className="relative z-10 text-center max-w-4xl">
-          <div className="relative w-48 h-48 mx-auto mb-4 rounded-xl overflow-hidden shadow-lg">
+          <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto mb-4 rounded-xl overflow-hidden shadow-lg">
             <Image
               src="/omkar-ghibli.jpeg"
               alt="Omkar Patil"
@@ -199,10 +201,10 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="inline-block mb-8">
-            <div className="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-sm">
-              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              <span className="text-sm font-medium uppercase tracking-wider text-purple-700">
+          <div className="inline-block mb-6 md:mb-8">
+            <div className="bg-white rounded-full px-3 md:px-4 py-1 md:py-2 flex items-center space-x-2 shadow-sm">
+              <div className="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full"></div>
+              <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-purple-700">
                 OPEN FOR COLLABORATION
               </span>
             </div>
@@ -212,7 +214,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
           >
             Hey! I'm Omkar.
             <br />
@@ -223,7 +225,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
+            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-6 md:mb-8 px-4"
           >
             AI Product Manager based in Pune, India, with 3 years experience building impactful consumer tech products.
           </motion.p>
@@ -232,7 +234,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto mb-4"
+            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 px-4"
           >
             From launching AI-powered health claim journeys at{" "}
             <a href="https://www.bajajfinservhealth.in/" className="text-blue-600 hover:underline">
@@ -245,7 +247,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="text-xl font-medium text-blue-600 max-w-2xl mx-auto"
+            className="text-lg md:text-xl font-medium text-blue-600 max-w-2xl mx-auto px-4"
           >
             🚀 I build things users love. And sometimes, I sell them too.
           </motion.p>
@@ -285,9 +287,9 @@ export default function HomePage() {
             Companies I have worked or collaborated with
           </h2>
 
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-xs md:max-w-3xl mx-auto">
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -307,10 +309,10 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/bfhl.png" alt="Bajaj Finserv Health" className="h-12 object-contain" />
+              <img src="/logos/bfhl.png" alt="Bajaj Finserv Health" className="h-8 md:h-12 object-contain" />
             </div>
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -330,10 +332,10 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/viral-fission-new.png" alt="Viral Fission" className="h-12 object-contain" />
+              <img src="/logos/viral-fission-new.png" alt="Viral Fission" className="h-8 md:h-12 object-contain" />
             </div>
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -353,7 +355,7 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/ewar.jpg" alt="EWar Games" className="h-12 object-contain" />
+              <img src="/logos/ewar.jpg" alt="EWar Games" className="h-8 md:h-12 object-contain" />
             </div>
           </div>
         </div>

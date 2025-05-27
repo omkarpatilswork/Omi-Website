@@ -90,15 +90,15 @@ export function VerticalPortfolioCarousel({ cards }: { cards: PortfolioCardProps
       <div className="flex justify-center mb-4">
         <button
           onClick={goToPrevious}
-          className="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
+          className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
           aria-label="Previous slide"
         >
-          <ChevronUp className="h-5 w-5" />
+          <ChevronUp className="h-4 w-4 md:h-5 md:w-5" />
         </button>
       </div>
 
       {/* Carousel container */}
-      <div className="relative h-[600px] md:h-[500px] w-full">
+      <div className="relative h-[700px] md:h-[600px] lg:h-[500px] w-full">
         <div className="absolute inset-0 flex items-center justify-center" ref={constraintsRef}>
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
@@ -108,7 +108,7 @@ export function VerticalPortfolioCarousel({ cards }: { cards: PortfolioCardProps
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute w-full"
+              className="absolute w-full px-2 md:px-0"
             >
               <PortfolioCard {...cards[currentIndex]} />
             </motion.div>
@@ -116,7 +116,7 @@ export function VerticalPortfolioCarousel({ cards }: { cards: PortfolioCardProps
         </div>
 
         {/* Navigation dots */}
-        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-10">
+        <div className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-10">
           {cards.map((_, index) => (
             <button
               key={index}
@@ -137,10 +137,10 @@ export function VerticalPortfolioCarousel({ cards }: { cards: PortfolioCardProps
       <div className="flex justify-center mt-4">
         <button
           onClick={goToNext}
-          className="bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
+          className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
           aria-label="Next slide"
         >
-          <ChevronDown className="h-5 w-5" />
+          <ChevronDown className="h-4 w-4 md:h-5 md:w-5" />
         </button>
       </div>
     </div>
@@ -183,17 +183,17 @@ function PortfolioCard({
   return (
     <motion.div
       className={cn(
-        "w-full bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col md:flex-row",
+        "w-full bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col",
         url && "hover:shadow-2xl transition-all duration-300",
       )}
       onClick={handleClick}
       whileHover={{ y: -5 }}
     >
-      <div className="p-8 md:p-10 md:w-1/2 flex flex-col bg-gradient-to-br from-white to-gray-50">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 leading-tight">{title}</h2>
-        <div className="text-gray-700 mb-8 leading-relaxed space-y-3">
+      <div className="p-6 md:p-8 lg:p-10 flex flex-col bg-gradient-to-br from-white to-gray-50">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">{title}</h2>
+        <div className="text-gray-700 mb-6 md:mb-8 leading-relaxed space-y-3">
           {description.split("\n\n").map((paragraph, index) => (
-            <p key={index} className="text-base">
+            <p key={index} className="text-sm md:text-base">
               {paragraph.split("\n").map((line, lineIndex) => (
                 <span key={lineIndex}>
                   {line}
@@ -205,9 +205,11 @@ function PortfolioCard({
         </div>
 
         {stats && (
-          <div className="mt-auto mb-6">
-            <div className="flex items-center gap-3">
-              <div className={`px-6 py-3 rounded-full text-white text-sm font-semibold shadow-lg ${bgGradient}`}>
+          <div className="mt-auto mb-4 md:mb-6">
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <div
+                className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-white text-xs md:text-sm font-semibold shadow-lg ${bgGradient}`}
+              >
                 {title === "YouTube Premium Mini" ? "Top 10 at Producscope 2021" : stats}
               </div>
             </div>
@@ -215,16 +217,16 @@ function PortfolioCard({
         )}
 
         {url && (
-          <div className="mt-auto">
+          <div className="mt-auto text-center md:text-left">
             <motion.div
-              className="inline-flex items-center text-base font-semibold group"
+              className="inline-flex items-center text-sm md:text-base font-semibold group"
               initial={{ x: 0 }}
               whileHover={{ x: 5 }}
             >
               <span className={`text-${color}-600 group-hover:text-${color}-700 transition-colors`}>View Project</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-5 w-5 ml-2 text-${color}-600 group-hover:text-${color}-700 transition-all group-hover:translate-x-1`}
+                className={`h-4 w-4 md:h-5 md:w-5 ml-2 text-${color}-600 group-hover:text-${color}-700 transition-all group-hover:translate-x-1`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -236,9 +238,9 @@ function PortfolioCard({
         )}
       </div>
 
-      <div className={`md:w-1/2 h-48 md:h-auto relative overflow-hidden ${bgGradient}`}>
+      <div className={`h-48 md:h-64 lg:h-auto lg:w-1/2 relative overflow-hidden ${bgGradient}`}>
         {image && (
-          <div className="absolute inset-0 p-6 flex items-center justify-center">
+          <div className="absolute inset-0 p-4 md:p-6 flex items-center justify-center">
             <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-contain rounded-lg" />
           </div>
         )}

@@ -32,28 +32,35 @@ function TimelineItem({
 
   return (
     <motion.div
-      className="flex flex-col border-b border-gray-200/50 last:border-b-0 hover:bg-white/40 transition-all duration-300 rounded-xl px-4 cursor-pointer overflow-hidden"
+      className="flex flex-col border-b border-gray-200/50 last:border-b-0 hover:bg-white/40 transition-all duration-300 rounded-xl px-2 md:px-4 cursor-pointer overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      <div className="flex items-center gap-6 py-8 relative">
+      <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 py-6 md:py-8 relative">
         <div
           className={cn(
-            "w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-transform duration-300 hover:scale-105",
+            "w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-transform duration-300 hover:scale-105 mx-auto md:mx-0",
           )}
           style={{ backgroundColor: logoBackground }}
         >
-          <Image src={logo || "/placeholder.svg"} alt={company} width={36} height={36} className="object-contain" />
+          <Image
+            src={logo || "/placeholder.svg"}
+            alt={company}
+            width={24}
+            height={24}
+            className="md:w-9 md:h-9 object-contain"
+          />
         </div>
-        <div className="flex-grow">
+
+        <div className="flex-grow text-center md:text-left">
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-2xl font-medium hover:text-blue-600 transition-colors group inline-flex items-center font-serif"
+            className="text-xl md:text-2xl font-medium hover:text-blue-600 transition-colors group inline-flex items-center justify-center md:justify-start font-serif"
             onClick={(e) => e.stopPropagation()}
           >
             {company}
@@ -75,8 +82,8 @@ function TimelineItem({
             </span>
           </a>
           {note && <p className="text-sm text-muted-foreground mt-1 italic">{note}</p>}
-          <div className="text-sm text-blue-500 mt-1 flex items-center">
-            <span>Click for details</span>
+          <div className="text-sm text-blue-500 mt-2 flex items-center justify-center md:justify-start">
+            <span>Tap for details</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className={`h-4 w-4 ml-1 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
@@ -88,8 +95,9 @@ function TimelineItem({
             </svg>
           </div>
         </div>
-        <div className="text-right">
-          <div className="text-xl font-medium">{role}</div>
+
+        <div className="text-center md:text-right order-first md:order-last">
+          <div className="text-lg md:text-xl font-medium">{role}</div>
           <div className="text-muted-foreground text-sm bg-gray-100/70 px-3 py-1 rounded-full inline-block mt-1">
             {period}
           </div>
@@ -103,15 +111,15 @@ function TimelineItem({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="pb-8 px-4"
+            className="pb-6 md:pb-8 px-2 md:px-4"
           >
             <ul className="list-none space-y-3 text-muted-foreground">
               {workDetails.map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className={`p-1 rounded-full bg-${detail.color}-500 text-white mt-1`}>
+                  <div className={`p-1 rounded-full bg-${detail.color}-500 text-white mt-1 flex-shrink-0`}>
                     <div className="w-3 h-3"></div>
                   </div>
-                  <span dangerouslySetInnerHTML={{ __html: detail.text }}></span>
+                  <span className="text-sm md:text-base" dangerouslySetInnerHTML={{ __html: detail.text }}></span>
                 </li>
               ))}
             </ul>
@@ -156,7 +164,6 @@ export function WorkTimeline() {
   ]
 
   const viralFissionDetails = [
- 
     {
       color: "indigo",
       text: "Orchestrated community-led growth by managing 12 ambassadors and driving pan-India operations for major brands",
@@ -188,19 +195,19 @@ export function WorkTimeline() {
   ]
 
   return (
-    <div className="glass-card p-8 md:p-12 rounded-3xl shadow-lg backdrop-blur-md border border-white/30 bg-white/80">
+    <div className="glass-card p-4 md:p-8 lg:p-12 rounded-3xl shadow-lg backdrop-blur-md border border-white/30 bg-white/80">
       <motion.div
-        className="text-center mb-12 md:mb-16"
+        className="text-center mb-8 md:mb-12 lg:mb-16"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl md:text-5xl font-medium font-serif">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium font-serif">
           <span>Work </span>
           <span className="gradient-text from-blue-500 to-purple-600">Experience</span>
         </h2>
-        <p className="text-2xl md:text-3xl font-medium mt-2 text-gray-500 font-serif">Timeline</p>
+        <p className="text-xl md:text-2xl lg:text-3xl font-medium mt-2 text-gray-500 font-serif">Timeline</p>
       </motion.div>
 
       <div className="max-w-4xl mx-auto">
