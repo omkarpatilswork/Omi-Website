@@ -167,6 +167,7 @@ function PortfolioCard({
     teal: "from-teal-400 to-teal-600",
     pink: "from-pink-400 to-pink-600",
     indigo: "from-indigo-400 to-indigo-600",
+    yellow: "from-yellow-400 to-yellow-600",
   }
 
   const gradient = gradientMap[color] || gradientMap.blue

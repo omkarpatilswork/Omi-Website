@@ -156,21 +156,18 @@ export function WorkTimeline() {
   ]
 
   const viralFissionDetails = [
-    {
-      color: "red",
-      text: "Built and scaled <strong>Jersey Drip</strong>, a student-led sportswear brand generating <strong>₹7L+ revenue</strong> with 50% margins via Swiggy Minis (250+ customers, 400+ orders)",
-    },
+ 
     {
       color: "indigo",
       text: "Orchestrated community-led growth by managing 12 ambassadors and driving pan-India operations for major brands",
     },
     {
       color: "purple",
-      text: "Executed high-impact campus campaigns for <strong>Myntra, Vice & Unacademy</strong>, delivering measurable engagement and conversion metrics",
+      text: "Executed high-impact campus campaigns for <strong>Myntra, Spotify, Vice & Unacademy</strong>, delivering measurable engagement and conversion metrics",
     },
     {
       color: "blue",
-      text: "Developed go-to-market strategies translating user insights into compelling brand narratives and activation plans",
+      text: "Developed go-to-market strategies for large consumer brands translating user insights into compelling brand narratives and activation plans",
     },
   ]
 

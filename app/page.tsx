@@ -55,9 +55,9 @@ export default function HomePage() {
       description:
         "🚇 Metro users already rely on autos/bike taxis for first and last-mile connectivity. Why not bundle the entire commute in one tap?\n\n💡 Solution: Rapido suggests a complete journey: Home → Metro A → Metro B → Office, with real-time driver allocation and a single upfront fare.\n\n📈 Key Wins:\n• 3X increase in rides per user\n• Zero discount dependency for adoption\n• Faster matching for bundled trip users",
       logo: <TrendingUp className="h-5 w-5 text-white" />,
-      logoBackground: "#3b82f6",
-      image: "/rapido-metro-integration.png",
-      color: "blue",
+      logoBackground: "#fbbf24",
+      image: "/rapido-logo-yellow.png",
+      color: "yellow",
       url: "https://drive.google.com/file/d/1en9oXpYz8kYTkZEE5Dg5E7n5DikGBHkZ/view?usp=sharing",
       stats: "3X Rides Increase",
     },
@@ -68,10 +68,46 @@ export default function HomePage() {
         "🎯 Ad-Free Experience, One Day at a Time. Ideal for binge days, travel, or special occasions.\n\n🧠 Frustrated by ads but don't want to pay monthly? YouTube Mini offers 1-day/week ad-free access with offline playback, background play & downloads—no subscription required.\n\n📊 Key Wins:\n• +Watch Time\n• Easy Premium Trial\n• ₹7/day, ₹35/week plans",
       logo: <Activity className="h-5 w-5 text-white" />,
       logoBackground: "#ff0000",
-      image: "/youtube-premium-mini.png",
+      image: "/youtube-premium-mini-new.png",
       color: "red",
       url: "https://drive.google.com/file/d/1iN-Jf1gIHZ3DE9ISFUb4SUG5xlPHTjIn/view?usp=sharing",
       stats: "Flexible Pricing",
+    },
+    {
+      title: "Foam Balls Dispenser",
+      subtitle: "STRATEGY",
+      description:
+        "🧠 The Problem: India throws away 6+ billion shampoo bottles annually. Most end up in landfills—especially from bathrooms where hygiene restricts reuse.\n\n💡 The Solution: Water-soluble foam balls stored in a sleek, stainless steel, wall-mounted dispenser. No bottles. No waste. No compromise.\n\n📊 Why It Works:\n• Zero plastic waste | 100% biodegradable\n• No spillage or clutter\n• Affordable, refillable, and hygienic",
+      logo: <Activity className="h-5 w-5 text-white" />,
+      logoBackground: "#10b981",
+      image: "/foam-balls-dispenser.png",
+      color: "green",
+      url: "https://drive.google.com/file/d/1WrPXRc9g1EcgKhtN3nKP6VQXGZSPUHPG/view?usp=sharing",
+      stats: "Winner – Ideathon @ E-Cell, MIT Manipal",
+    },
+    {
+      title: "Acropolis – A Citadel in Space",
+      subtitle: "STRATEGY",
+      description:
+        "🧠 The Challenge: How can we build a livable, scalable ecosystem in space? Acropolis addressed key issues such as micro-meteorite protection, renewable energy generation, water synthesis, nutritional sustainability, and social well-being in a zero-gravity environment.\n\n🔬 A blend of scientific rigor and futuristic vision, Acropolis was a stepping stone toward imagining permanent human life beyond Earth.\n\n📊 Key Highlights:\n• Engineered shielding against space debris\n• Circular systems for food, water, and oxygen recycling\n• Gravity simulation, modular habitats and systems thinking",
+      logo: <Activity className="h-5 w-5 text-white" />,
+      logoBackground: "#6366f1",
+      image: "/acropolis-space-settlement.png",
+      color: "indigo",
+      url: "https://drive.google.com/file/d/1ublI5u1xQ8rupHWlxKZ45Sd0Kxs-IUra/view?usp=sharing",
+      stats: "Finalist – NASA Ames Space Settlement Contest",
+    },
+    {
+      title: "CARS24 Partners App",
+      subtitle: "STRATEGY",
+      description:
+        "A detailed analysis of 7,500+ reviews across Play Store and App Store reveals critical usability and performance issues affecting the dealer experience on the CARS24 Partners platform.\n\n🧠 The Problem: Users face lag, crashes, bidding errors, and inventory upload failures, disrupting the workflow and impacting business. Poor UI, confusing onboarding, and inaccurate vehicle details further erode trust in the platform.\n\n💡 Proposed Solutions:\n• Introduce event-driven architecture for real-time bid updates\n• Redesign UI using heatmaps and usability tests\n• Use AI-based image recognition & video inspections to verify car condition\n• Add real-time push alerts and live bidding dashboards for transparency",
+      logo: <Activity className="h-5 w-5 text-white" />,
+      logoBackground: "#f97316",
+      image: "/cars24-partners-logo.png",
+      color: "orange",
+      url: "https://drive.google.com/file/d/1mvGI18qmTnpLtFz6F28QLv7BVXaKMz98/view?usp=sharing",
+      stats: "Business Review Document",
     },
   ]
 
@@ -97,9 +133,14 @@ export default function HomePage() {
               <Link href="#contact" className="text-gray-700 hover:text-gray-900">
                 reach out
               </Link>
-              <Link href="/resume.pdf" className="text-gray-700 hover:text-gray-900">
+              <a
+                href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 hover:text-gray-900"
+              >
                 resume
-              </Link>
+              </a>
             </div>
             <div className="flex items-center space-x-4">
               <a
@@ -519,7 +560,7 @@ export default function HomePage() {
               <h3 className="text-lg font-medium">Manipal Institute of Technology</h3>
             </div>
             <p className="text-muted-foreground">
-              B.Tech – IT | Minor in Digital Marketing | Class Rep | Astronomy Club GS
+              Bachelor of Technology | Information Technology (minor in Digital Marketing) | 2019 - 2023
             </p>
           </motion.div>
           <motion.div
@@ -539,7 +580,7 @@ export default function HomePage() {
               <h3 className="text-lg font-medium">Indian School of Business</h3>
             </div>
             <p className="text-muted-foreground">
-              Product Management | Top 10% | IIT Guwahati x PM School Competition Finalist
+              Executive Program Certification | Product Management | Feb 2024 - May 2024
             </p>
           </motion.div>
         </div>
@@ -566,24 +607,37 @@ export default function HomePage() {
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-12 grid-rows-2 gap-3 md:gap-4 h-[500px] md:h-[600px]">
-            <div className="col-span-4 row-span-1 rounded-3xl overflow-hidden relative">
-              <img src="/images/gaming-setup.png" alt="Gaming setup" className="w-full h-full object-cover" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto">
+            {/* Hiking image - Portrait */}
+            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
+              <img
+                src="/images/omkar-hiking.jpeg"
+                alt="Adventure and hiking"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div className="col-span-8 row-span-2 rounded-3xl overflow-hidden relative">
-              <img src="/images/travel-adventure.png" alt="Travel adventures" className="w-full h-full object-cover" />
+
+            {/* Casual image - Portrait */}
+            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
+              <img
+                src="/images/omkar-casual.jpeg"
+                alt="Lifestyle and casual moments"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div className="col-span-4 row-span-1 rounded-3xl overflow-hidden relative">
-              <img src="/images/book-collection.png" alt="Book collection" className="w-full h-full object-cover" />
+
+            {/* Biking image - Portrait */}
+            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
+              <img src="/images/omkar-biking.jpeg" alt="Biking passion" className="w-full h-full object-contain" />
             </div>
-            <div className="col-span-5 row-span-1 rounded-3xl overflow-hidden relative">
-              <img src="/images/gaming-passion.png" alt="Gaming passion" className="w-full h-full object-cover" />
-            </div>
-            <div className="col-span-4 row-span-1 rounded-3xl overflow-hidden relative">
-              <img src="/images/tech-conference.png" alt="Tech conferences" className="w-full h-full object-cover" />
-            </div>
-            <div className="col-span-3 row-span-1 rounded-3xl overflow-hidden relative">
-              <img src="/images/paragliding.png" alt="Adventure sports" className="w-full h-full object-cover" />
+
+            {/* Speaking image - Landscape (spans full width on mobile, single column on desktop) */}
+            <div className="md:col-span-1 rounded-3xl overflow-hidden relative bg-gray-200 aspect-[4/3]">
+              <img
+                src="/images/omkar-speaking.jpeg"
+                alt="Speaking and leadership"
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </motion.div>
@@ -631,6 +685,20 @@ export default function HomePage() {
               <span>⚽</span>
               <span>FC Barcelona Die hard Fan</span>
             </motion.div>
+            <motion.div
+              className="skill-badge bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800"
+              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+            >
+              <span>📚</span>
+              <span>Mystery Novels Reader</span>
+            </motion.div>
+            <motion.div
+              className="skill-badge bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-800"
+              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+            >
+              <span>🥾</span>
+              <span>Trekker</span>
+            </motion.div>
           </div>
         </motion.div>
       </MotionSection>
@@ -656,7 +724,7 @@ export default function HomePage() {
 
           <div className="flex flex-wrap justify-center gap-8 mb-10">
             <motion.a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
@@ -669,6 +737,8 @@ export default function HomePage() {
 
             <motion.a
               href="mailto:omkarpatilswork@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
               whileHover={{ y: -3, scale: 1.05 }}
               transition={{ duration: 0.2 }}
