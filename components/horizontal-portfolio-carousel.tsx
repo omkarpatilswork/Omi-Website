@@ -85,7 +85,7 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
   }
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto">
+    <div className="relative w-full max-w-5xl mx-auto px-4 md:px-0">
       {/* Carousel container */}
       <div className="relative h-[600px] md:h-[500px] w-full">
         <div className="absolute inset-0 flex items-center justify-center" ref={constraintsRef}>
@@ -97,7 +97,7 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute w-full px-2 md:px-0"
+              className="absolute w-full"
             >
               <PortfolioCard {...cards[currentIndex]} />
             </motion.div>
@@ -123,7 +123,7 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
       </div>
 
       {/* Navigation buttons - Outside the card */}
-      <div className="absolute top-1/2 -left-12 md:-left-16 transform -translate-y-1/2">
+      <div className="absolute top-1/2 -left-6 md:-left-16 transform -translate-y-1/2">
         <button
           onClick={goToPrevious}
           className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
@@ -133,7 +133,7 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
         </button>
       </div>
 
-      <div className="absolute top-1/2 -right-12 md:-right-16 transform -translate-y-1/2">
+      <div className="absolute top-1/2 -right-6 md:-right-16 transform -translate-y-1/2">
         <button
           onClick={goToNext}
           className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
@@ -173,19 +173,9 @@ function PortfolioCard({
   const bgGradient = `bg-gradient-to-r ${gradient}`
   const lightBg = `bg-${color}-50`
 
-  const handleClick = () => {
-    if (url) {
-      window.open(url, "_blank", "noopener,noreferrer")
-    }
-  }
-
   return (
     <motion.div
-      className={cn(
-        "w-full bg-white rounded-2xl shadow-xl overflow-hidden cursor-pointer flex flex-col md:flex-row",
-        url && "hover:shadow-2xl transition-all duration-300",
-      )}
-      onClick={handleClick}
+      className={cn("w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row")}
       whileHover={{ y: -5 }}
     >
       <div className="p-6 md:p-8 lg:p-10 flex flex-col md:w-1/2 bg-gradient-to-br from-white to-gray-50">
@@ -217,8 +207,11 @@ function PortfolioCard({
 
         {url && (
           <div className="mt-auto text-center md:text-left">
-            <motion.div
-              className="inline-flex items-center text-sm md:text-base font-semibold group"
+            <motion.a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-sm md:text-base font-semibold group cursor-pointer"
               initial={{ x: 0 }}
               whileHover={{ x: 5 }}
             >
@@ -232,16 +225,21 @@ function PortfolioCard({
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
-            </motion.div>
+            </motion.a>
           </div>
         )}
       </div>
 
       <div className={`h-48 md:h-auto md:w-1/2 relative overflow-hidden ${bgGradient}`}>
         {image && (
-          <div className="absolute inset-0 p-4 md:p-6 flex items-center justify-center">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 p-4 md:p-6 flex items-center justify-center cursor-pointer"
+          >
             <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-contain rounded-lg" />
-          </div>
+          </a>
         )}
       </div>
     </motion.div>

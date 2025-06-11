@@ -53,7 +53,7 @@ export default function HomePage() {
       title: "Rapido Metro Integration",
       subtitle: "STRATEGY",
       description:
-        "🚇 Metro users already rely on autos/bike taxis for first and last-mile connectivity. Why not bundle the entire commute in one tap?\n\n💡 Solution: Rapido suggests a complete journey: Home → Metro A → Metro B → Office, with real-time driver allocation and a single upfront fare.\n\n📈 Key Wins:\n• 3X increase in rides per user\n• Zero discount dependency for adoption\n• Faster matching for bundled trip users",
+        "🚇 One-Tap Commute, End-to-End\nMetro users already depend on autos/bikes for first & last-mile. Why not bundle it all?\n\n💡My Solution:\nSuggests a complete trip—Home → Metro A → Metro B → Office—with real-time driver allocation & one upfront fare.\n\n📈 Wins:\n• 3× more rides/user\n• No discounts needed\n• Faster matching for bundled trips",
       logo: <TrendingUp className="h-5 w-5 text-white" />,
       logoBackground: "#fbbf24",
       image: "/rapido-logo-yellow.png",
@@ -86,10 +86,10 @@ export default function HomePage() {
       stats: "Winner – Ideathon @ E-Cell, MIT Manipal",
     },
     {
-      title: "Acropolis – A Citadel in Space",
+      title: "Acropolis – Life Beyond Earth, Reimagined",
       subtitle: "STRATEGY",
       description:
-        "🧠 The Challenge: How can we build a livable, scalable ecosystem in space? Acropolis addressed key issues such as micro-meteorite protection, renewable energy generation, water synthesis, nutritional sustainability, and social well-being in a zero-gravity environment.\n\n🔬 A blend of scientific rigor and futuristic vision, Acropolis was a stepping stone toward imagining permanent human life beyond Earth.\n\n📊 Key Highlights:\n• Engineered shielding against space debris\n• Circular systems for food, water, and oxygen recycling\n• Gravity simulation, modular habitats and systems thinking",
+        "🌌 Can we create a livable, self-sustaining ecosystem in space? Acropolis explored what it takes to thrive off-planet.\n\n💡 The Vision:\nA modular space habitat designed to tackle micro-meteorites, generate energy, synthesize water, and simulate gravity—supporting long-term human survival.\n\n📈 Wins:\n• Engineered debris shielding\n• Closed-loop systems for food, water & air\n• Scalable zero-G living with modular design",
       logo: <Activity className="h-5 w-5 text-white" />,
       logoBackground: "#6366f1",
       image: "/acropolis-space-settlement.png",
@@ -98,10 +98,10 @@ export default function HomePage() {
       stats: "Finalist – NASA Ames Space Settlement Contest",
     },
     {
-      title: "CARS24 Partners App",
+      title: "CARS24 Partners – Fixing the Dealer Experience",
       subtitle: "STRATEGY",
       description:
-        "A detailed analysis of 7,500+ reviews across Play Store and App Store reveals critical usability and performance issues affecting the dealer experience on the CARS24 Partners platform.\n\n🧠 The Problem: Users face lag, crashes, bidding errors, and inventory upload failures, disrupting the workflow and impacting business. Poor UI, confusing onboarding, and inaccurate vehicle details further erode trust in the platform.\n\n💡 Proposed Solutions:\n• Introduce event-driven architecture for real-time bid updates\n• Redesign UI using heatmaps and usability tests\n• Use AI-based image recognition & video inspections to verify car condition\n• Add real-time push alerts and live bidding dashboards for transparency",
+        "🚗 Dealers face frequent crashes, bidding issues, and upload failures—hurting trust and business on the platform.\n\n💡 Proposed Solutions:\nRevamp with real-time architecture, cleaner UI, AI-driven car verification, and transparent bidding via live dashboards.\n\n📈 Wins:\n• Smoother, crash-free workflows\n• Faster, more trusted bidding\n• Better onboarding & dealer retention",
       logo: <Activity className="h-5 w-5 text-white" />,
       logoBackground: "#f97316",
       image: "/cars24-partners-logo.png",
@@ -123,7 +123,10 @@ export default function HomePage() {
               </div>
             </Link>
             <div className="flex items-center space-x-2 md:space-x-6 overflow-x-auto no-scrollbar">
-              <Link href="#" className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap">
+              <Link
+                href="#"
+                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap hidden md:block"
+              >
                 about me
               </Link>
               <Link
@@ -145,7 +148,7 @@ export default function HomePage() {
                 href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
+                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap hidden md:block"
               >
                 resume
               </a>
@@ -208,12 +211,17 @@ export default function HomePage() {
           </div>
 
           <div className="inline-block mb-6 md:mb-8">
-            <div className="bg-white rounded-full px-3 md:px-4 py-1 md:py-2 flex items-center space-x-2 shadow-sm">
+            <a
+              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-full px-3 md:px-4 py-1 md:py-2 flex items-center space-x-2 shadow-sm hover:shadow-md transition-all cursor-pointer"
+            >
               <div className="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full"></div>
               <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-purple-700">
                 OPEN FOR COLLABORATION
               </span>
-            </div>
+            </a>
           </div>
 
           <motion.h1
@@ -387,7 +395,7 @@ export default function HomePage() {
           viewport={{ once: true }}
         >
           <span className="inline-block">Startups </span>
-          <span className="inline-block gradient-text from-blue-500 to-purple-600">I've Built</span>
+          <span className="inline-block gradient-text from-blue-500 to-purple-600">Built</span>
         </motion.h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
           <motion.div
@@ -523,7 +531,7 @@ export default function HomePage() {
 
         {/* Product Case Studies */}
         <motion.h3
-          className="text-4xl md:text-5xl font-serif font-medium mb-8 md:mb-12 text-center"
+          className="text-4xl md:text-5xl font-serif font-medium mb-16 md:mb-24 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -550,7 +558,7 @@ export default function HomePage() {
       {/* Education Section */}
       <MotionSection id="education" dataSection="education" className="section container-custom">
         <motion.h2
-          className="text-4xl md:text-5xl font-serif font-medium mb-8 md:mb-12 text-center"
+          className="text-4xl md:text-5xl font-serif font-medium mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -606,7 +614,7 @@ export default function HomePage() {
       {/* Skills Section */}
       <MotionSection id="skills" dataSection="skills" className="section container-custom">
         <motion.h2
-          className="text-4xl md:text-5xl font-serif font-medium mb-8 md:mb-12 text-center"
+          className="text-4xl md:text-5xl font-serif font-medium mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -790,11 +798,13 @@ export default function HomePage() {
           </div>
 
           <motion.a
-            href="mailto:omkarpatilswork@gmail.com"
+            href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-white rounded-full text-gray-800 font-medium shadow-md hover:shadow-lg transition-all"
             whileHover={{ y: -2, scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
           >
-            Contact
+            Let's Connect!
           </motion.a>
         </div>
 

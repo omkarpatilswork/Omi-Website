@@ -195,7 +195,7 @@ export function WorkTimeline() {
   ]
 
   return (
-    <div className="glass-card p-4 md:p-8 lg:p-12 rounded-3xl shadow-lg backdrop-blur-md border border-white/30 bg-white/80">
+    <>
       <motion.div
         className="text-center mb-8 md:mb-12 lg:mb-16"
         initial={{ opacity: 0, y: 20 }}
@@ -203,46 +203,57 @@ export function WorkTimeline() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium font-serif">
+        <h2 className="text-4xl md:text-5xl font-serif font-medium">
           <span>Work </span>
           <span className="gradient-text from-blue-500 to-purple-600">Experience</span>
         </h2>
-        <p className="text-xl md:text-2xl lg:text-3xl font-medium mt-2 text-gray-500 font-serif">Timeline</p>
       </motion.div>
 
-      <div className="max-w-4xl mx-auto">
-        <TimelineItem
-          company="Bajaj Finserv Health"
-          role="Associate Product Manager"
-          period="Jan 2023 - Now"
-          logo="/logos/bfhl.png"
-          logoBackground="#ffffff"
-          url="https://www.bajajfinservhealth.in/"
-          delay={0.1}
-          workDetails={bajajDetails}
-        />
-        <TimelineItem
-          company="Viral Fission"
-          role="Network Executive Head"
-          period="June 2023 - Jan 2024"
-          logo="/logos/viral-fission-new.png"
-          logoBackground="#ffffff"
-          url="https://www.viralfission.com/"
-          delay={0.2}
-          workDetails={viralFissionDetails}
-        />
-        <TimelineItem
-          company="EWar Games"
-          role="Marketing & BD Intern"
-          period="July 2021 - Nov 2021"
-          logo="/logos/ewar.jpg"
-          logoBackground="#1e2130"
-          url="https://getstan.app/"
-          delay={0.3}
-          note="Rebranded as STAN"
-          workDetails={ewarDetails}
-        />
+      <div className="glass-card p-4 md:p-8 lg:p-12 rounded-3xl shadow-lg backdrop-blur-md border border-white/30 bg-white/80">
+        <motion.div
+          className="text-center mb-8 md:mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <p className="text-xl md:text-2xl lg:text-3xl font-medium text-gray-500 font-serif">Timeline</p>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto">
+          <TimelineItem
+            company="Bajaj Finserv Health"
+            role="Associate Product Manager"
+            period="Jan 2023 - Now"
+            logo="/logos/bfhl.png"
+            logoBackground="#ffffff"
+            url="https://www.bajajfinservhealth.in/"
+            delay={0.1}
+            workDetails={bajajDetails}
+          />
+          <TimelineItem
+            company="Viral Fission"
+            role="Network Executive Head"
+            period="June 2023 - Jan 2024"
+            logo="/logos/viral-fission-new.png"
+            logoBackground="#ffffff"
+            url="https://www.viralfission.com/"
+            delay={0.2}
+            workDetails={viralFissionDetails}
+          />
+          <TimelineItem
+            company="EWar Games"
+            role="Marketing & BD Intern"
+            period="July 2021 - Nov 2021"
+            logo="/logos/ewar.jpg"
+            logoBackground="#1e2130"
+            url="https://getstan.app/"
+            delay={0.3}
+            note="Rebranded as STAN"
+            workDetails={ewarDetails}
+          />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
