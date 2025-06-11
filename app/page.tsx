@@ -86,7 +86,7 @@ export default function HomePage() {
       stats: "Winner – Ideathon @ E-Cell, MIT Manipal",
     },
     {
-      title: "Acropolis – Life Beyond Earth, Reimagined",
+      title: "Acropolis – Life Beyond Earth",
       subtitle: "STRATEGY",
       description:
         "🌌 Can we create a livable, self-sustaining ecosystem in space? Acropolis explored what it takes to thrive off-planet.\n\n💡 The Vision:\nA modular space habitat designed to tackle micro-meteorites, generate energy, synthesize water, and simulate gravity—supporting long-term human survival.\n\n📈 Wins:\n• Engineered debris shielding\n• Closed-loop systems for food, water & air\n• Scalable zero-G living with modular design",
@@ -98,7 +98,7 @@ export default function HomePage() {
       stats: "Finalist – NASA Ames Space Settlement Contest",
     },
     {
-      title: "CARS24 Partners – Fixing the Dealer Experience",
+      title: "CARS24 Partners – Fixing Dealer Exp",
       subtitle: "STRATEGY",
       description:
         "🚗 Dealers face frequent crashes, bidding issues, and upload failures—hurting trust and business on the platform.\n\n💡 Proposed Solutions:\nRevamp with real-time architecture, cleaner UI, AI-driven car verification, and transparent bidding via live dashboards.\n\n📈 Wins:\n• Smoother, crash-free workflows\n• Faster, more trusted bidding\n• Better onboarding & dealer retention",
