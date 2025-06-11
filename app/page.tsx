@@ -3,7 +3,6 @@
 import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { MotionSection } from "@/components/motion-section"
-import { VerticalPortfolioCarousel } from "@/components/vertical-portfolio-carousel"
 import {
   Linkedin,
   Mail,
@@ -20,6 +19,7 @@ import {
 import { WorkTimeline } from "@/components/work-timeline"
 import Link from "next/link"
 import Image from "next/image"
+import { HorizontalPortfolioCarousel } from "@/components/horizontal-portfolio-carousel"
 
 export default function HomePage() {
   const scrollRef = useRef(null)
@@ -122,24 +122,30 @@ export default function HomePage() {
                 O
               </div>
             </Link>
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
-              <Link href="#" className="text-gray-700 hover:text-gray-900 text-sm">
+            <div className="flex items-center space-x-2 md:space-x-6 overflow-x-auto no-scrollbar">
+              <Link href="#" className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap">
                 about me
               </Link>
-              <Link href="#portfolio" className="text-gray-700 hover:text-gray-900 text-sm">
+              <Link
+                href="#portfolio"
+                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
+              >
                 product portfolio
               </Link>
-              <Link href="#experience" className="text-gray-700 hover:text-gray-900 text-sm">
+              <Link
+                href="#experience"
+                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
+              >
                 my work
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-gray-900 text-sm">
+              <Link href="#contact" className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap">
                 reach out
               </Link>
               <a
                 href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900 text-sm"
+                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
               >
                 resume
               </a>
@@ -247,7 +253,16 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="text-lg md:text-xl font-medium text-blue-600 max-w-2xl mx-auto px-4"
+            className="text-lg md:text-xl font-medium text-blue-600 max-w-2xl mx-auto px-4 cursor-pointer hover:underline"
+            onClick={() => {
+              const section = document.querySelector('[data-section="portfolio"]')
+              if (section) {
+                window.scrollTo({
+                  top: (section as HTMLElement).offsetTop - 100,
+                  behavior: "smooth",
+                })
+              }
+            }}
           >
             🚀 I build things users love. And sometimes, I sell them too.
           </motion.p>
@@ -519,7 +534,7 @@ export default function HomePage() {
         </motion.h3>
 
         {/* Vertical Portfolio Carousel */}
-        <VerticalPortfolioCarousel cards={portfolioCards} />
+        <HorizontalPortfolioCarousel cards={portfolioCards} />
 
         {/* Technical Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 mt-8">
