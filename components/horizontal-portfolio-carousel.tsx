@@ -85,9 +85,9 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
   }
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto px-4 md:px-0">
+    <div className="relative w-full max-w-5xl mx-auto px-6 md:px-8">
       {/* Carousel container */}
-      <div className="relative h-[600px] md:h-[500px] w-full">
+      <div className="relative h-[700px] md:h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center" ref={constraintsRef}>
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
@@ -123,23 +123,23 @@ export function HorizontalPortfolioCarousel({ cards }: { cards: PortfolioCardPro
       </div>
 
       {/* Navigation buttons - Outside the card */}
-      <div className="absolute top-1/2 -left-6 md:-left-16 transform -translate-y-1/2">
+      <div className="absolute top-1/2 left-0 md:-left-16 transform -translate-y-1/2 z-20">
         <button
           onClick={goToPrevious}
-          className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
+          className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all hover:scale-110"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+          <ChevronLeft className="h-5 w-5" />
         </button>
       </div>
 
-      <div className="absolute top-1/2 -right-6 md:-right-16 transform -translate-y-1/2">
+      <div className="absolute top-1/2 right-0 md:-right-16 transform -translate-y-1/2 z-20">
         <button
           onClick={goToNext}
-          className="bg-white/80 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-md hover:bg-white transition-all z-10"
+          className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all hover:scale-110"
           aria-label="Next slide"
         >
-          <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+          <ChevronRight className="h-5 w-5" />
         </button>
       </div>
     </div>
@@ -179,10 +179,12 @@ function PortfolioCard({
       whileHover={{ y: -5 }}
     >
       <div className="p-6 md:p-8 lg:p-10 flex flex-col md:w-1/2 bg-gradient-to-br from-white to-gray-50">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">{title}</h2>
-        <div className="text-gray-700 mb-6 md:mb-8 leading-relaxed space-y-3">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight break-words">
+          {title}
+        </h2>
+        <div className="text-gray-700 mb-6 md:mb-8 leading-relaxed space-y-2 md:space-y-3">
           {description.split("\n\n").map((paragraph, index) => (
-            <p key={index} className="text-sm md:text-base">
+            <p key={index} className="text-sm md:text-base leading-relaxed">
               {paragraph.split("\n").map((line, lineIndex) => (
                 <span key={lineIndex}>
                   {line}

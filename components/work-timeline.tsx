@@ -32,7 +32,7 @@ function TimelineItem({
 
   return (
     <motion.div
-      className="flex flex-col border-b border-gray-200/50 last:border-b-0 hover:bg-white/40 transition-all duration-300 rounded-xl px-2 md:px-4 cursor-pointer overflow-hidden"
+      className="flex flex-col border-b border-gray-200/50 last:border-b-0 hover:bg-white/40 transition-all duration-300 rounded-xl px-4 md:px-4 py-6 md:py-8 cursor-pointer overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
@@ -42,16 +42,16 @@ function TimelineItem({
       <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 py-6 md:py-8 relative">
         <div
           className={cn(
-            "w-12 h-12 md:w-16 md:h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-transform duration-300 hover:scale-105 mx-auto md:mx-0",
+            "w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-transform duration-300 hover:scale-105 mx-auto md:mx-0",
           )}
           style={{ backgroundColor: logoBackground }}
         >
           <Image
             src={logo || "/placeholder.svg"}
             alt={company}
-            width={24}
-            height={24}
-            className="md:w-9 md:h-9 object-contain"
+            width={32}
+            height={32}
+            className="w-7 h-7 md:w-9 md:h-9 object-contain"
           />
         </div>
 
@@ -113,13 +113,16 @@ function TimelineItem({
             transition={{ duration: 0.3 }}
             className="pb-6 md:pb-8 px-2 md:px-4"
           >
-            <ul className="list-none space-y-3 text-muted-foreground">
+            <ul className="list-none space-y-3 md:space-y-4 text-muted-foreground px-2 md:px-0">
               {workDetails.map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <div className={`p-1 rounded-full bg-${detail.color}-500 text-white mt-1 flex-shrink-0`}>
                     <div className="w-3 h-3"></div>
                   </div>
-                  <span className="text-sm md:text-base" dangerouslySetInnerHTML={{ __html: detail.text }}></span>
+                  <span
+                    className="text-sm md:text-base leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: detail.text }}
+                  ></span>
                 </li>
               ))}
             </ul>
@@ -223,7 +226,7 @@ export function WorkTimeline() {
         <div className="max-w-4xl mx-auto">
           <TimelineItem
             company="Bajaj Finserv Health"
-            role="Associate Product Manager"
+            role="Product Manager"
             period="Jan 2023 - Now"
             logo="/logos/bfhl.png"
             logoBackground="#ffffff"

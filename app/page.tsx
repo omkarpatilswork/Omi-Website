@@ -89,7 +89,7 @@ export default function HomePage() {
       title: "Acropolis – Life Beyond Earth",
       subtitle: "STRATEGY",
       description:
-        "🌌 Can we create a livable, self-sustaining ecosystem in space? Acropolis explored what it takes to thrive off-planet.\n\n💡 The Vision:\nA modular space habitat designed to tackle micro-meteorites, generate energy, synthesize water, and simulate gravity—supporting long-term human survival.\n\n📈 Wins:\n• Engineered debris shielding\n• Closed-loop systems for food, water & air\n• Scalable zero-G living with modular design",
+        "🌌 Can we create a livable, self-sustaining ecosystem in space? Acropolis explored what it takes to thrive off-planet.\n\n💡 The Vision:\nA modular space habitat designed to tackle meteorites, generate energy, synthesize water, & simulate gravity—supporting long-term human survival.\n\n📈 Wins:\n• Engineered debris shielding\n• Closed-loop systems for food, water & air\n• Scalable zero-G living with modular design",
       logo: <Activity className="h-5 w-5 text-white" />,
       logoBackground: "#6366f1",
       image: "/acropolis-space-settlement.png",
@@ -101,7 +101,7 @@ export default function HomePage() {
       title: "CARS24 Partners – Fixing Dealer Exp",
       subtitle: "STRATEGY",
       description:
-        "🚗 Dealers face frequent crashes, bidding issues, and upload failures—hurting trust and business on the platform.\n\n💡 Proposed Solutions:\nRevamp with real-time architecture, cleaner UI, AI-driven car verification, and transparent bidding via live dashboards.\n\n📈 Wins:\n• Smoother, crash-free workflows\n• Faster, more trusted bidding\n• Better onboarding & dealer retention",
+        "🚗 Dealers face frequent crashes, bidding issues, and upload failures—hurting trust and business on the platform.\n\n💡 Proposed Solutions:\nRevamp with real-time architecture, AI-driven car verification, and transparent bidding via live dashboards.\n\n📈 Wins:\n• Smoother, crash-free workflows\n• Faster, more trusted bidding\n• Better onboarding & dealer retention",
       logo: <Activity className="h-5 w-5 text-white" />,
       logoBackground: "#f97316",
       image: "/cars24-partners-logo.png",
@@ -114,8 +114,8 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gray-100 text-gray-800 font-sans">
       {/* Navigation */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-2 md:px-4 py-2 md:py-4">
-        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-3 md:px-6 py-2 md:py-3 shadow-sm">
+      <div className="fixed top-0 left-0 right-0 z-50 px-4 py-3 md:px-4 md:py-4">
+        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-4 md:px-6 py-3 md:py-3 shadow-sm">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-xl md:text-2xl font-bold">
               <div className="w-6 h-6 md:w-8 md:h-8 bg-gray-900 rounded-full flex items-center justify-center text-white text-sm md:text-base">
@@ -186,13 +186,13 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-16 md:pb-20 px-4">
         <motion.div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none overflow-hidden"
           style={{ opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <div className="h-full w-full flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
             <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
             <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -228,7 +228,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
             Hey! I'm Omkar.
             <br />
@@ -239,7 +239,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-6 md:mb-8 px-4"
+            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-6 md:mb-8 px-4 leading-relaxed"
           >
             AI Product Manager based in Pune, India, with 3 years experience building impactful consumer tech products.
           </motion.p>
@@ -248,7 +248,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 px-4"
+            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 px-4 leading-relaxed"
           >
             From launching AI-powered health claim journeys at{" "}
             <a href="https://www.bajajfinservhealth.in/" className="text-blue-600 hover:underline">
@@ -310,9 +310,9 @@ export default function HomePage() {
             Companies I have worked or collaborated with
           </h2>
 
-          <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-xs md:max-w-3xl mx-auto">
+          <div className="grid grid-cols-3 gap-6 md:gap-8 max-w-sm md:max-w-3xl mx-auto px-4">
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -320,7 +320,6 @@ export default function HomePage() {
                     top: (section as HTMLElement).offsetTop - 100,
                     behavior: "smooth",
                   })
-                  // Find and expand Bajaj Finserv Health timeline item
                   setTimeout(() => {
                     const timelineItems = document.querySelectorAll(".collapsible-header")
                     timelineItems.forEach((item) => {
@@ -332,10 +331,10 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/bfhl.png" alt="Bajaj Finserv Health" className="h-8 md:h-12 object-contain" />
+              <img src="/logos/bfhl.png" alt="Bajaj Finserv Health" className="h-10 md:h-12 object-contain" />
             </div>
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -343,7 +342,6 @@ export default function HomePage() {
                     top: (section as HTMLElement).offsetTop - 100,
                     behavior: "smooth",
                   })
-                  // Find and expand Viral Fission timeline item
                   setTimeout(() => {
                     const timelineItems = document.querySelectorAll(".collapsible-header")
                     timelineItems.forEach((item) => {
@@ -355,10 +353,10 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/viral-fission-new.png" alt="Viral Fission" className="h-8 md:h-12 object-contain" />
+              <img src="/logos/viral-fission-new.png" alt="Viral Fission" className="h-10 md:h-12 object-contain" />
             </div>
             <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-2"
+              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
               onClick={() => {
                 const section = document.querySelector('[data-section="experience"]')
                 if (section) {
@@ -366,7 +364,6 @@ export default function HomePage() {
                     top: (section as HTMLElement).offsetTop - 100,
                     behavior: "smooth",
                   })
-                  // Find and expand EWar Games timeline item
                   setTimeout(() => {
                     const timelineItems = document.querySelectorAll(".collapsible-header")
                     timelineItems.forEach((item) => {
@@ -378,7 +375,7 @@ export default function HomePage() {
                 }
               }}
             >
-              <img src="/logos/ewar.jpg" alt="EWar Games" className="h-8 md:h-12 object-contain" />
+              <img src="/logos/ewar.jpg" alt="EWar Games" className="h-10 md:h-12 object-contain" />
             </div>
           </div>
         </div>
@@ -674,55 +671,70 @@ export default function HomePage() {
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-wrap gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <motion.div
-              className="skill-badge bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>🏸</span>
-              <span>Zonal-level Badminton Player</span>
+              <span className="text-2xl">🏸</span>
+              <span className="font-semibold">Zonal Badminton Champion</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-red-100 to-red-200 text-red-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-red-400 to-orange-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(239, 68, 68, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>🏍️</span>
-              <span>Biker & Roadtrip Lover</span>
+              <span className="text-2xl">🏍️</span>
+              <span className="font-semibold">Roadtrip Enthusiast</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(168, 85, 247, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>🌌</span>
-              <span>Astronomy Geek</span>
+              <span className="text-2xl">🌌</span>
+              <span className="font-semibold">Space & Cosmos Geek</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-green-100 to-green-200 text-green-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-green-400 to-emerald-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>📈</span>
-              <span>Stock Market & Sports Stats Nerd</span>
+              <span className="text-2xl">📈</span>
+              <span className="font-semibold">Markets & Stats Analyst</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-blue-100 to-red-200 text-blue-900"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-blue-600 to-red-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(37, 99, 235, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>⚽</span>
-              <span>FC Barcelona Die hard Fan</span>
+              <span className="text-2xl">⚽</span>
+              <span className="font-semibold">Barça Fanatic</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-amber-400 to-yellow-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(245, 158, 11, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>📚</span>
-              <span>Mystery Novels Reader</span>
+              <span className="text-2xl">📚</span>
+              <span className="font-semibold">Mystery Novel Buff</span>
             </motion.div>
             <motion.div
-              className="skill-badge bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-800"
-              whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0,0,0,0.05)" }}
+              className="skill-badge bg-gradient-to-br from-teal-400 to-cyan-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(20, 184, 166, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
             >
-              <span>🥾</span>
-              <span>Trekker</span>
+              <span className="text-2xl">🥾</span>
+              <span className="font-semibold">Mountain Trekker</span>
+            </motion.div>
+            <motion.div
+              className="skill-badge bg-gradient-to-br from-pink-400 to-rose-600 text-white shadow-lg hover:shadow-2xl"
+              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(236, 72, 153, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="text-2xl">🎯</span>
+              <span className="font-semibold">Strategic Thinker</span>
             </motion.div>
           </div>
         </motion.div>
@@ -809,7 +821,7 @@ export default function HomePage() {
         </div>
 
         {/* Background effects */}
-        <div className="absolute bottom-0 right-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
           <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
           <div className="absolute right-1/4 bottom-1/3 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
           <div className="absolute left-1/4 top-1/3 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
