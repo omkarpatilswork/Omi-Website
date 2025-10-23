@@ -116,7 +116,32 @@ function TimelineItem({
             <ul className="list-none space-y-3 md:space-y-4 text-muted-foreground px-2 md:px-0">
               {workDetails.map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className={`p-1 rounded-full bg-${detail.color}-500 text-white mt-1 flex-shrink-0`}>
+                  <div
+                    className="p-1 rounded-full text-white mt-1 flex-shrink-0"
+                    style={{
+                      backgroundColor: `var(--${detail.color}-500, ${
+                        detail.color === "orange"
+                          ? "#f97316"
+                          : detail.color === "blue"
+                            ? "#3b82f6"
+                            : detail.color === "green"
+                              ? "#22c55e"
+                              : detail.color === "purple"
+                                ? "#a855f7"
+                                : detail.color === "teal"
+                                  ? "#14b8a6"
+                                  : detail.color === "red"
+                                    ? "#ef4444"
+                                    : detail.color === "indigo"
+                                      ? "#6366f1"
+                                      : detail.color === "yellow"
+                                        ? "#eab308"
+                                        : detail.color === "pink"
+                                          ? "#ec4899"
+                                          : "#3b82f6"
+                      })`,
+                    }}
+                  >
                     <div className="w-3 h-3"></div>
                   </div>
                   <span

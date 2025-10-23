@@ -122,7 +122,7 @@ export default function HomePage() {
                 O
               </div>
             </Link>
-            <div className="flex items-center space-x-2 md:space-x-6 overflow-x-auto no-scrollbar">
+            <div className="flex items-center space-x-2 md:space-x-6 overflow-x-auto no-scrollbar flex-nowrap">
               <Link
                 href="#"
                 className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap hidden md:block"
