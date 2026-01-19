@@ -729,121 +729,145 @@ export default function HomePage() {
           <span className="inline-block gradient-text from-blue-500 to-purple-600">Work</span>
         </motion.h2>
 
-        {/* Image Collage Grid */}
+        {/* Image Collage Grid - Masonry Style */}
         <motion.div
-          className="mb-10"
+          className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-auto">
-            {/* Hiking image - Portrait */}
-            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {/* Hiking image */}
+            <motion.div 
+              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
               <img
                 src="/images/omkar-hiking.jpeg"
                 alt="Adventure and hiking"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
 
-            {/* Casual image - Portrait */}
-            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
+            {/* Casual image */}
+            <motion.div 
+              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
               <img
                 src="/images/omkar-casual.jpeg"
                 alt="Lifestyle and casual moments"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
 
-            {/* Biking image - Portrait */}
-            <div className="rounded-3xl overflow-hidden relative bg-gray-200 aspect-[3/4]">
-              <img src="/images/omkar-biking.jpeg" alt="Biking passion" className="w-full h-full object-contain" />
-            </div>
+            {/* Biking image */}
+            <motion.div 
+              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="/images/omkar-biking.jpeg" 
+                alt="Biking passion" 
+                className="w-full h-full object-cover" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
 
-            {/* Speaking image - Landscape (spans full width on mobile, single column on desktop) */}
-            <div className="md:col-span-1 rounded-3xl overflow-hidden relative bg-gray-200 aspect-[4/3]">
+            {/* Speaking image */}
+            <motion.div 
+              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
               <img
                 src="/images/omkar-speaking.jpeg"
                 alt="Speaking and leadership"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
               />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+            </motion.div>
           </div>
         </motion.div>
 
+        {/* Interest Tags - Clean Design */}
         <motion.div
-          className="glass-card p-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-blue-400 to-blue-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(59, 130, 246, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+          <div className="flex flex-wrap justify-center gap-3">
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">🏸</span>
-              <span className="font-semibold">Zonal Badminton Champion</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-red-400 to-orange-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(239, 68, 68, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">🏸</span>
+              Zonal Badminton Champion
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">🏍️</span>
-              <span className="font-semibold">Roadtrip Enthusiast</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-purple-400 to-purple-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(168, 85, 247, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">🏍️</span>
+              Roadtrip Enthusiast
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">🌌</span>
-              <span className="font-semibold">Space & Cosmos Geek</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-green-400 to-emerald-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(34, 197, 94, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">🌌</span>
+              Space & Cosmos Geek
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">📈</span>
-              <span className="font-semibold">Markets & Stats Analyst</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-blue-600 to-red-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(37, 99, 235, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">📈</span>
+              Markets & Stats Analyst
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">⚽</span>
-              <span className="font-semibold">Barça Fanatic</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-amber-400 to-yellow-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(245, 158, 11, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">⚽</span>
+              Barca Fanatic
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">📚</span>
-              <span className="font-semibold">Mystery Novel Buff</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-teal-400 to-cyan-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: 2, boxShadow: "0 10px 30px rgba(20, 184, 166, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">📚</span>
+              Mystery Novel Buff
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">🥾</span>
-              <span className="font-semibold">Mountain Trekker</span>
-            </motion.div>
-            <motion.div
-              className="skill-badge bg-gradient-to-br from-pink-400 to-rose-600 text-white shadow-lg hover:shadow-2xl"
-              whileHover={{ scale: 1.08, rotate: -2, boxShadow: "0 10px 30px rgba(236, 72, 153, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              <span className="text-lg">🥾</span>
+              Mountain Trekker
+            </motion.span>
+            <motion.span
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-2xl">🎯</span>
-              <span className="font-semibold">Strategic Thinker</span>
-            </motion.div>
+              <span className="text-lg">🎯</span>
+              Strategic Thinker
+            </motion.span>
           </div>
         </motion.div>
       </MotionSection>
