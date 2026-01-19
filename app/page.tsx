@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { MotionSection } from "@/components/motion-section"
 import {
   Linkedin,
@@ -15,6 +15,8 @@ import {
   Trophy,
   Glasses,
   FileText,
+  Menu,
+  X,
 } from "lucide-react"
 import { WorkTimeline } from "@/components/work-timeline"
 import Link from "next/link"
@@ -27,6 +29,7 @@ export default function HomePage() {
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
   const [isMobile, setIsMobile] = useState(false)
   const [scrollY, setScrollY] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -46,6 +49,11 @@ export default function HomePage() {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
+
+  // Close mobile menu when clicking a link
+  const handleNavClick = () => {
+    setMobileMenuOpen(false)
+  }
 
   // Portfolio cards data
   const portfolioCards = [
@@ -114,74 +122,174 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gray-100 text-gray-800 font-sans">
       {/* Navigation */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-4 py-3 md:px-4 md:py-4">
-        <div className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-4 md:px-6 py-3 md:py-3 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3 md:px-4 md:py-4">
+        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl md:rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-xl md:text-2xl font-bold">
-              <div className="w-6 h-6 md:w-8 md:h-8 bg-gray-900 rounded-full flex items-center justify-center text-white text-sm md:text-base">
+            {/* Logo */}
+            <Link href="/" className="text-xl md:text-2xl font-bold flex-shrink-0">
+              <div className="w-10 h-10 md:w-10 md:h-10 bg-gradient-to-br from-gray-900 to-gray-700 rounded-full flex items-center justify-center text-white text-base md:text-lg font-bold shadow-md">
                 O
               </div>
             </Link>
-            <div className="flex items-center space-x-2 md:space-x-6 overflow-x-auto no-scrollbar flex-nowrap">
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
               <Link
                 href="#"
-                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap hidden md:block"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
               >
-                about me
+                About Me
               </Link>
               <Link
                 href="#portfolio"
-                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
               >
-                product portfolio
+                Product Portfolio
               </Link>
               <Link
                 href="#experience"
-                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
               >
-                my work
+                My Work
               </Link>
-              <Link href="#contact" className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap">
-                reach out
+              <Link
+                href="#contact"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
+              >
+                Reach Out
               </Link>
               <a
                 href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900 text-xs md:text-sm whitespace-nowrap hidden md:block"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
               >
-                resume
+                Resume
               </a>
             </div>
-            <div className="flex items-center space-x-2 md:space-x-4">
+
+            {/* Desktop Social Icons */}
+            <div className="hidden md:flex items-center space-x-3">
               <a
                 href="mailto:omkarpatilswork@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
+                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
               >
-                <Mail className="w-4 h-4 md:w-5 md:h-5" />
+                <Mail className="w-5 h-5" />
               </a>
               <a
                 href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
+                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
               >
-                <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
+                <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="https://github.com/omkarpatilswork"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
+                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
               >
-                <Github className="w-4 h-4 md:w-5 md:h-5" />
+                <Github className="w-5 h-5" />
               </a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden w-11 h-11 flex items-center justify-center text-gray-700 hover:bg-gray-100 rounded-full transition-all"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-      </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+            >
+              <div className="p-4 space-y-1">
+                <Link
+                  href="#"
+                  onClick={handleNavClick}
+                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                >
+                  About Me
+                </Link>
+                <Link
+                  href="#portfolio"
+                  onClick={handleNavClick}
+                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                >
+                  Product Portfolio
+                </Link>
+                <Link
+                  href="#experience"
+                  onClick={handleNavClick}
+                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                >
+                  My Work
+                </Link>
+                <Link
+                  href="#contact"
+                  onClick={handleNavClick}
+                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                >
+                  Reach Out
+                </Link>
+                <a
+                  href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleNavClick}
+                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                >
+                  <FileText className="w-5 h-5 mr-3" />
+                  Resume
+                </a>
+                <div className="border-t border-gray-100 pt-3 mt-3">
+                  <div className="flex items-center justify-center space-x-4">
+                    <a
+                      href="mailto:omkarpatilswork@gmail.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+                    >
+                      <Mail className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://github.com/omkarpatilswork"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-16 md:pb-20 px-4">
@@ -741,9 +849,9 @@ export default function HomePage() {
       </MotionSection>
 
       {/* Contact Section */}
-      <section id="contact" data-section="contact" className="py-20 px-4 bg-gray-100 relative overflow-hidden">
+      <section id="contact" data-section="contact" className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-100 to-gray-50 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="relative w-48 h-48 mx-auto mb-8 rounded-xl overflow-hidden shadow-lg">
+          <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto mb-8 rounded-2xl overflow-hidden shadow-xl">
             <Image
               src="/omkar-speaking.jpeg"
               alt="Omkar Patil Speaking"
@@ -753,84 +861,126 @@ export default function HomePage() {
             />
           </div>
 
-          <h2 className="text-4xl font-bold mb-2">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
             Yay! <span className="text-blue-600">You made it</span> this far
           </h2>
 
-          <p className="text-xl mb-12">Clearly, we vibe. Let's make cool stuff together.</p>
+          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed">
+            Clearly, we vibe. Let's make cool stuff together.
+          </p>
 
-          <div className="flex flex-wrap justify-center gap-8 mb-10">
+          {/* Primary CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+            <motion.a
+              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary w-full sm:w-auto"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Let's Connect
+            </motion.a>
             <motion.a
               href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
-              whileHover={{ y: -3, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="btn-secondary w-full sm:w-auto"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <FileText className="h-5 w-5" />
-              <span className="font-medium">View Resume</span>
+              <FileText className="h-5 w-5 mr-2" />
+              View Resume
             </motion.a>
+          </div>
 
+          {/* Social Links */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             <motion.a
               href="mailto:omkarpatilswork@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
-              whileHover={{ y: -3, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Mail className="h-5 w-5" />
-              <span className="font-medium">Email</span>
             </motion.a>
-
             <motion.a
               href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
-              whileHover={{ y: -3, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Linkedin className="h-5 w-5" />
-              <span className="font-medium">LinkedIn</span>
             </motion.a>
-
             <motion.a
               href="https://github.com/omkarpatilswork"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"
-              whileHover={{ y: -3, scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-gray-900 hover:shadow-lg transition-all"
+              whileHover={{ y: -3, scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Github className="h-5 w-5" />
-              <span className="font-medium">GitHub</span>
             </motion.a>
           </div>
-
-          <motion.a
-            href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-8 py-3 bg-white rounded-full text-gray-800 font-medium shadow-md hover:shadow-lg transition-all"
-            whileHover={{ y: -2, scale: 1.02, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-          >
-            Let's Connect!
-          </motion.a>
         </div>
 
         {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-          <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute right-1/4 bottom-1/3 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute left-1/4 top-1/3 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute -right-20 -bottom-20 w-64 md:w-96 h-64 md:h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute right-1/4 bottom-1/3 w-48 md:w-80 h-48 md:h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute left-1/4 top-1/3 w-40 md:w-72 h-40 md:h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-6 text-center text-sm text-gray-500 bg-gray-100 border-t border-gray-200">
-        <p>© Omkar Patil 2025</p>
+      <footer className="py-8 md:py-10 bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Logo & Copyright */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-900 font-bold">
+                O
+              </div>
+              <span className="text-gray-400 text-sm">© 2025 Omkar Patil. All rights reserved.</span>
+            </div>
+
+            {/* Footer Links */}
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm">
+              <Link href="#portfolio" className="text-gray-400 hover:text-white transition-colors">
+                Portfolio
+              </Link>
+              <Link href="#experience" className="text-gray-400 hover:text-white transition-colors">
+                Experience
+              </Link>
+              <a
+                href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                Resume
+              </a>
+            </div>
+
+            {/* Footer CTA */}
+            <motion.a
+              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition-all text-sm"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Mail className="w-4 h-4" />
+              Contact Me
+            </motion.a>
+          </div>
+        </div>
       </footer>
     </main>
   )
