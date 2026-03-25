@@ -4,14 +4,14 @@ import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, TrendingUp, Activity } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface PortfolioCardProps {
   title: string
   subtitle: string
   description: string
-  logo?: React.ReactNode
+  logoIcon?: string
   logoBackground?: string
   image?: string
   color?: string
@@ -150,7 +150,7 @@ function PortfolioCard({
   title,
   subtitle,
   description,
-  logo,
+  logoIcon,
   logoBackground = "#f3f4f6",
   image,
   color = "blue",
@@ -167,6 +167,17 @@ function PortfolioCard({
     pink: "from-pink-400 to-pink-600",
     indigo: "from-indigo-400 to-indigo-600",
     yellow: "from-yellow-400 to-yellow-600",
+  }
+
+  const getIconComponent = () => {
+    switch (logoIcon) {
+      case "trending":
+        return <TrendingUp className="h-5 w-5 text-white" />
+      case "activity":
+        return <Activity className="h-5 w-5 text-white" />
+      default:
+        return <Activity className="h-5 w-5 text-white" />
+    }
   }
 
   const gradient = gradientMap[color] || gradientMap.blue
