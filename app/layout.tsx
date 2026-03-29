@@ -16,9 +16,9 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Omkar Patil | Product Manager",
-  description: "Product Manager. Builder. Storyteller.",
-    generator: 'v0.app'
+  title: "Omkar Patil | Founder & Product Builder",
+  description: "I build products, communities, and distribution from 0 to 1. Product Manager turned founder building ventures across fintech, commerce, and fitness.",
+  generator: 'v0.app'
 }
 
 export default function RootLayout({

@@ -1,198 +1,113 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { MotionSection } from "@/components/motion-section"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import {
   Linkedin,
   Mail,
-  Github,
-  GraduationCap,
-  Award,
-  TrendingUp,
-  Shirt,
-  Activity,
-  Trophy,
-  Glasses,
-  FileText,
+  ArrowRight,
+  ExternalLink,
   Menu,
   X,
+  Zap,
+  TrendingUp,
+  Target,
+  Rocket,
+  AlertCircle,
 } from "lucide-react"
-import { WorkTimeline } from "@/components/work-timeline"
 import Link from "next/link"
-import Image from "next/image"
-import { HorizontalPortfolioCarousel } from "@/components/horizontal-portfolio-carousel"
 
 export default function HomePage() {
-  const scrollRef = useRef(null)
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
-  const [isMobile, setIsMobile] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => {
-      window.removeEventListener("resize", checkMobile)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
-  // Close mobile menu when clicking a link
   const handleNavClick = () => {
     setMobileMenuOpen(false)
   }
 
-  // Portfolio cards data
-  const portfolioCards = [
+  // What I'm Building data
+  const ventures = [
     {
-      title: "Rapido Metro Integration",
-      subtitle: "STRATEGY",
-      description:
-        "🚇 One-Tap Commute, End-to-End\nMetro users already depend on autos/bikes for first & last-mile. Why not bundle it all?\n\n💡My Solution:\nSuggests a complete trip—Home → Metro A → Metro B → Office—with real-time driver allocation & one upfront fare.\n\n📈 Wins:\n• 3× more rides/user\n• No discounts needed\n• Faster matching for bundled trips",
-      logoIcon: "trending",
-      logoBackground: "#fbbf24",
-      image: "/rapido-logo-yellow.png",
-      color: "yellow",
-      url: "https://drive.google.com/file/d/1en9oXpYz8kYTkZEE5Dg5E7n5DikGBHkZ/view?usp=sharing",
-      stats: "3X Rides Increase",
+      name: "EZBill",
+      tagline: "All your bills in one place. Track, split, reimburse, and never lose a receipt.",
+      details: [
+        "Aggregates bills from SMS, email, WhatsApp",
+        "OCR for physical receipts",
+        "Focus: solving real-world financial friction",
+      ],
+      status: "Primary Focus",
+      accent: "bg-emerald-500",
     },
     {
-      title: "YouTube Premium Mini",
-      subtitle: "STRATEGY",
-      description:
-        "🎯 Ad-Free Experience, One Day at a Time. Ideal for binge days, travel, or special occasions.\n\n🧠 Frustrated by ads but don't want to pay monthly? YouTube Mini offers 1-day/week ad-free access with offline playback, background play & downloads—no subscription required.\n\n📊 Key Wins:\n• +Watch Time\n• Easy Premium Trial\n• ₹7/day, ₹35/week plans",
-      logoIcon: "activity",
-      logoBackground: "#ff0000",
-      image: "/youtube-premium-mini-new.png",
-      color: "red",
-      url: "https://drive.google.com/file/d/1iN-Jf1gIHZ3DE9ISFUb4SUG5xlPHTjIn/view?usp=sharing",
-      stats: "Flexible Pricing",
+      name: "Bijlee",
+      tagline: "Gamifying fitness through community and competition.",
+      details: [
+        "Started as a run club in Pune",
+        "Building a platform to track runs, compete, and earn rewards",
+        "Expanding into sports, trekking, and corporate wellness",
+        "Partnering with brands for distribution",
+      ],
+      status: "Building",
+      accent: "bg-amber-500",
     },
     {
-      title: "Foam Balls Dispenser",
-      subtitle: "STRATEGY",
-      description:
-        "🧠 The Problem: India throws away 6+ billion shampoo bottles annually. Most end up in landfills—especially from bathrooms where hygiene restricts reuse.\n\n💡 The Solution: Water-soluble foam balls stored in a sleek, stainless steel, wall-mounted dispenser. No bottles. No waste. No compromise.\n\n📊 Why It Works:\n• Zero plastic waste | 100% biodegradable\n• No spillage or clutter\n• Affordable, refillable, and hygienic",
-      logoIcon: "activity",
-      logoBackground: "#10b981",
-      image: "/foam-balls-dispenser.png",
-      color: "green",
-      url: "https://drive.google.com/file/d/1WrPXRc9g1EcgKhtN3nKP6VQXGZSPUHPG/view?usp=sharing",
-      stats: "Winner – Ideathon @ E-Cell, MIT Manipal",
-    },
-    {
-      title: "Acropolis – Life Beyond Earth",
-      subtitle: "STRATEGY",
-      description:
-        "🌌 Can we create a livable, self-sustaining ecosystem in space? Acropolis explored what it takes to thrive off-planet.\n\n💡 The Vision:\nA modular space habitat designed to tackle meteorites, generate energy, synthesize water, & simulate gravity—supporting long-term human survival.\n\n📈 Wins:\n• Engineered debris shielding\n• Closed-loop systems for food, water & air\n• Scalable zero-G living with modular design",
-      logoIcon: "activity",
-      logoBackground: "#06b6d4",
-      image: "/acropolis-space-settlement.png",
-      color: "cyan",
-      url: "https://drive.google.com/file/d/1ublI5u1xQ8rupHWlxKZ45Sd0Kxs-IUra/view?usp=sharing",
-      stats: "Finalist - NASA Ames Space Settlement Contest",
-    },
-    {
-      title: "CARS24 Partners",
-      subtitle: "STRATEGY",
-      description:
-        "🚗 Fixing the Dealer Experience\nDealers face frequent crashes, bidding issues, and upload failures—hurting trust and business on the platform.\n\n💡 Proposed Solutions:\nRevamp with real-time architecture, cleaner UI, AI-driven car verification, and transparent bidding via live dashboards.\n\n📈 Wins:\n• Smoother, crash-free workflows\n• Faster, more trusted bidding\n• Better onboarding & dealer retention",
-      logoIcon: "activity",
-      logoBackground: "#3b82f6",
-      image: "/cars24-partners-logo.png",
-      color: "blue",
-      url: "https://drive.google.com/file/d/1mvGI18qmTnpLtFz6F28QLv7BVXaKMz98/view?usp=sharing",
-      stats: "Business Review Document",
+      name: "Jersey Drip",
+      tagline: "Building a hybrid commerce distribution system.",
+      details: [
+        "D2C + offline vending-style kiosks in gyms/sports centers",
+        "Dropshipping via jerseydrip.shop",
+        "2L+ revenue through lean execution",
+      ],
+      status: "Revenue",
+      accent: "bg-blue-500",
     },
   ]
 
+  // How I Think principles
+  const principles = [
+    { icon: TrendingUp, text: "Distribution > Product" },
+    { icon: Target, text: "Start offline, scale digitally" },
+    { icon: Zap, text: "Build for real behavior, not ideal users" },
+    { icon: Rocket, text: "Speed > Perfection" },
+    { icon: AlertCircle, text: "If it doesn't grow, it's wrong" },
+  ]
+
+  // Proof points
+  const proofPoints = [
+    { metric: "3X", label: "Growth in production system" },
+    { metric: "2L+", label: "Revenue from side venture" },
+    { metric: "Multiple", label: "0 to 1 product builds" },
+    { metric: "3", label: "Domains: fintech, commerce, community" },
+  ]
+
   return (
-    <main className="min-h-screen bg-gray-100 text-gray-800 font-sans">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3 md:px-4 md:py-4">
-        <div className="max-w-6xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl md:rounded-full px-4 md:px-6 py-3 shadow-lg border border-gray-100">
-          <div className="flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 md:px-6">
+          <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="text-xl md:text-2xl font-bold flex-shrink-0">
-              <div className="w-10 h-10 md:w-10 md:h-10 bg-gradient-to-br from-gray-900 to-gray-700 rounded-full flex items-center justify-center text-white text-base md:text-lg font-bold shadow-md">
-                O
-              </div>
+            <Link href="/" className="font-bold text-xl tracking-tight">
+              Omkar<span className="text-gray-400">.</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              <Link
-                href="#"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
-              >
-                About Me
+            <div className="hidden md:flex items-center gap-8">
+              <Link href="#building" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Building
               </Link>
-              <Link
-                href="#portfolio"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
-              >
-                Product Portfolio
+              <Link href="#experience" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Experience
               </Link>
-              <Link
-                href="#experience"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
-              >
-                My Work
-              </Link>
-              <Link
-                href="#contact"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
-              >
-                Reach Out
+              <Link href="#thinking" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                How I Think
               </Link>
               <a
-                href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+                href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full text-sm font-medium transition-all"
+                className="text-sm font-medium bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors"
               >
-                Resume
-              </a>
-            </div>
-
-            {/* Desktop Social Icons */}
-            <div className="hidden md:flex items-center space-x-3">
-              <a
-                href="mailto:omkarpatilswork@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://github.com/omkarpatilswork"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-              >
-                <Github className="w-5 h-5" />
+                Contact
               </a>
             </div>
 
@@ -200,7 +115,7 @@ export default function HomePage() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-11 h-11 flex items-center justify-center text-gray-700 hover:bg-gray-100 rounded-full transition-all"
+              className="md:hidden p-2 text-gray-600"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -208,83 +123,45 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden absolute top-full left-4 right-4 mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-b border-gray-100"
             >
-              <div className="p-4 space-y-1">
+              <div className="px-4 py-4 space-y-3">
                 <Link
-                  href="#"
+                  href="#building"
                   onClick={handleNavClick}
-                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                  className="block py-2 text-gray-600 hover:text-gray-900"
                 >
-                  About Me
-                </Link>
-                <Link
-                  href="#portfolio"
-                  onClick={handleNavClick}
-                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
-                >
-                  Product Portfolio
+                  Building
                 </Link>
                 <Link
                   href="#experience"
                   onClick={handleNavClick}
-                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                  className="block py-2 text-gray-600 hover:text-gray-900"
                 >
-                  My Work
+                  Experience
                 </Link>
                 <Link
-                  href="#contact"
+                  href="#thinking"
                   onClick={handleNavClick}
-                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                  className="block py-2 text-gray-600 hover:text-gray-900"
                 >
-                  Reach Out
+                  How I Think
                 </Link>
                 <a
-                  href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+                  href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={handleNavClick}
-                  className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-xl text-base font-medium transition-all"
+                  className="block py-2 font-medium text-gray-900"
                 >
-                  <FileText className="w-5 h-5 mr-3" />
-                  Resume
+                  Contact
                 </a>
-                <div className="border-t border-gray-100 pt-3 mt-3">
-                  <div className="flex items-center justify-center space-x-4">
-                    <a
-                      href="mailto:omkarpatilswork@gmail.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-                    >
-                      <Mail className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-                    >
-                      <Linkedin className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://github.com/omkarpatilswork"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
-                  </div>
-                </div>
               </div>
             </motion.div>
           )}
@@ -292,720 +169,351 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-24 md:pt-32 pb-16 md:pb-20 px-4">
-        <motion.div
-          className="absolute inset-0 pointer-events-none overflow-hidden"
-          style={{ opacity }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-            <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-          </div>
-        </motion.div>
-
-        <div className="relative z-10 text-center max-w-4xl">
-          <div className="relative w-32 h-32 md:w-48 md:h-48 mx-auto mb-4 rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src="/omkar-ghibli.jpeg"
-              alt="Omkar Patil"
-              width={192}
-              height={192}
-              className="object-cover w-full h-full"
-            />
-          </div>
-
-          <div className="inline-block mb-6 md:mb-8">
-            <a
-              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-full px-3 md:px-4 py-1 md:py-2 flex items-center space-x-2 shadow-sm hover:shadow-md transition-all cursor-pointer"
-            >
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full"></div>
-              <span className="text-xs md:text-sm font-medium uppercase tracking-wider text-purple-700">
-                OPEN FOR COLLABORATION
-              </span>
-            </a>
-          </div>
-
-          <motion.h1
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
           >
-            Hey! I'm Omkar.
-            <br />
-            Welcome to my Digital Space
-          </motion.h1>
+            {/* Small proof line */}
+            <p className="text-sm text-gray-500 mb-6 tracking-wide">
+              3X product growth &bull; Multiple 0 to 1 builds &bull; Offline + digital distribution
+            </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-6 md:mb-8 px-4 leading-relaxed"
-          >
-            AI Product Manager based in Pune, India, with 3 years experience building impactful consumer tech products.
-          </motion.p>
+            {/* Main headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+              I build products, communities,
+              <br />
+              and distribution from 0 to 1.
+            </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-4 px-4 leading-relaxed"
-          >
-            From launching AI-powered health claim journeys at{" "}
-            <a href="https://www.bajajfinservhealth.in/" className="text-blue-600 hover:underline">
-              Bajaj Finserv Health
-            </a>{" "}
-            to building profitable student-run ventures, I blend data-driven product thinking with a bias for action.
-          </motion.p>
+            {/* Subheading */}
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-10 leading-relaxed">
+              Product Manager turned founder. Built and scaled products at Bajaj Finserv Health (3X growth), 
+              now building ventures across fintech, commerce, and fitness.
+            </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="text-lg md:text-xl font-medium text-blue-600 max-w-2xl mx-auto px-4 cursor-pointer hover:underline"
-            onClick={() => {
-              const section = document.querySelector('[data-section="portfolio"]')
-              if (section) {
-                window.scrollTo({
-                  top: (section as HTMLElement).offsetTop - 100,
-                  behavior: "smooth",
-                })
-              }
-            }}
-          >
-            🚀 I build things users love. And sometimes, I sell them too.
-          </motion.p>
-
-          <div className="mt-16 mb-16 flex items-center justify-center">
-            <div className="w-1/3 h-px bg-gray-300"></div>
-            <div className="mx-4 text-gray-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <motion.a
+                href="#building"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
+                View What I&apos;m Building
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
+              <motion.a
+                href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 text-gray-900 font-medium rounded-full hover:bg-gray-50 transition-all"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Work With Me
+              </motion.a>
             </div>
-            <div className="w-1/3 h-px bg-gray-300"></div>
-          </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <h2
-            className="text-xl text-gray-500 uppercase tracking-wider mb-10 cursor-pointer hover:text-blue-500 transition-colors"
-            onClick={() => {
-              const section = document.querySelector('[data-section="experience"]')
-              if (section) {
-                window.scrollTo({
-                  top: (section as HTMLElement).offsetTop - 100,
-                  behavior: "smooth",
-                })
-              }
-            }}
+      {/* What I'm Building Section */}
+      <section id="building" className="py-20 md:py-28 px-4 md:px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            Companies I have worked or collaborated with
-          </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What I&apos;m Building</h2>
+            <p className="text-gray-600 mb-12 max-w-xl">
+              Currently exploring multiple bets across fintech, fitness, and commerce.
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-3 gap-6 md:gap-8 max-w-sm md:max-w-3xl mx-auto px-4">
-            <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
-              onClick={() => {
-                const section = document.querySelector('[data-section="experience"]')
-                if (section) {
-                  window.scrollTo({
-                    top: (section as HTMLElement).offsetTop - 100,
-                    behavior: "smooth",
-                  })
-                  setTimeout(() => {
-                    const timelineItems = document.querySelectorAll(".collapsible-header")
-                    timelineItems.forEach((item) => {
-                      if (item.textContent?.includes("Bajaj Finserv Health")) {
-                        ;(item as HTMLElement).click()
-                      }
-                    })
-                  }, 500)
-                }
-              }}
-            >
-              <img src="/logos/bfhl.png" alt="Bajaj Finserv Health" className="h-10 md:h-12 object-contain" />
-            </div>
-            <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
-              onClick={() => {
-                const section = document.querySelector('[data-section="experience"]')
-                if (section) {
-                  window.scrollTo({
-                    top: (section as HTMLElement).offsetTop - 100,
-                    behavior: "smooth",
-                  })
-                  setTimeout(() => {
-                    const timelineItems = document.querySelectorAll(".collapsible-header")
-                    timelineItems.forEach((item) => {
-                      if (item.textContent?.includes("Viral Fission")) {
-                        ;(item as HTMLElement).click()
-                      }
-                    })
-                  }, 500)
-                }
-              }}
-            >
-              <img src="/logos/viral-fission-new.png" alt="Viral Fission" className="h-10 md:h-12 object-contain" />
-            </div>
-            <div
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all cursor-pointer p-3 md:p-2"
-              onClick={() => {
-                const section = document.querySelector('[data-section="experience"]')
-                if (section) {
-                  window.scrollTo({
-                    top: (section as HTMLElement).offsetTop - 100,
-                    behavior: "smooth",
-                  })
-                  setTimeout(() => {
-                    const timelineItems = document.querySelectorAll(".collapsible-header")
-                    timelineItems.forEach((item) => {
-                      if (item.textContent?.includes("EWar Games")) {
-                        ;(item as HTMLElement).click()
-                      }
-                    })
-                  }, 500)
-                }
-              }}
-            >
-              <img src="/logos/ewar.jpg" alt="EWar Games" className="h-10 md:h-12 object-contain" />
-            </div>
+          <div className="grid gap-6">
+            {ventures.map((venture, index) => (
+              <motion.div
+                key={venture.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all"
+              >
+                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h3 className="text-xl md:text-2xl font-bold">{venture.name}</h3>
+                      <span className={`px-2 py-1 text-xs font-medium text-white rounded-full ${venture.accent}`}>
+                        {venture.status}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 mb-4 text-lg">{venture.tagline}</p>
+                    <ul className="space-y-2">
+                      {venture.details.map((detail, i) => (
+                        <li key={i} className="flex items-start gap-2 text-gray-500 text-sm">
+                          <span className="text-gray-400 mt-1">-</span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Product Portfolio Section */}
-      <MotionSection id="portfolio" dataSection="portfolio" className="section container-custom">
-        {/* Startups I've Built */}
-        <motion.h3
-          className="text-4xl md:text-5xl font-serif font-medium mb-16 md:mb-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block">Startups </span>
-          <span className="inline-block gradient-text from-blue-500 to-purple-600">Built</span>
-        </motion.h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          <motion.div
-            className="glass-card overflow-hidden relative hover-lift"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-          >
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-400 to-red-600"></div>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className="p-3 rounded-md bg-gradient-to-r from-red-400 to-red-600 text-white shadow-md"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Shirt className="h-6 w-6" />
-                </motion.div>
-                <h3 className="text-xl font-medium">Jersey Drip</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Student-led sportswear brand with ₹7L+ Revenue, live on Swiggy Minis with 250+ customers and 400+
-                orders.
-              </p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full">2020–Present</span>
-                <a
-                  href="https://jersey-drip.mini.site/?path=%2F"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-red-500 hover:text-red-600 transition-colors"
-                >
-                  Visit site
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 00-2 2v10a2 2 002 2h10a2 2 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="glass-card overflow-hidden relative hover-lift"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-          >
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-teal-400 to-teal-600"></div>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className="p-3 rounded-md bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-md"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Glasses className="h-6 w-6" />
-                </motion.div>
-                <h3 className="text-xl font-medium">Specxy</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Refurbished eyewear startup that was Runners-up at Hult Prize India and Finalists at Dhaka Summit.
-              </p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-xs bg-teal-100 text-teal-800 px-2 py-1 rounded-full">2022–2023</span>
-                <span className="text-teal-500 font-medium">Hult Prize Finalist</span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="glass-card overflow-hidden relative hover-lift"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-          >
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-400 to-indigo-600"></div>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <motion.div
-                  className="p-3 rounded-md bg-gradient-to-r from-indigo-400 to-indigo-600 text-white shadow-md"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Trophy className="h-6 w-6" />
-                </motion.div>
-                <h3 className="text-xl font-medium">Virtual Cricket Auctions</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Built an IPL auction game for college fans with 1K+ followers and 50+ online events.
-              </p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full">2021–2022</span>
-                <a
-                  href="https://www.instagram.com/virtual.ipl.auction/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-indigo-500 hover:text-indigo-600 transition-colors"
-                >
-                  Instagram
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 00-2 2v10a2 2 002 2h10a2 2 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Product Case Studies */}
-        <motion.h3
-          className="text-4xl md:text-5xl font-serif font-medium mb-16 md:mb-24 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block">Product </span>
-          <span className="inline-block gradient-text from-blue-500 to-purple-600">Portfolio</span>
-        </motion.h3>
-
-        {/* Vertical Portfolio Carousel */}
-        <HorizontalPortfolioCarousel cards={portfolioCards} />
-
-        {/* Technical Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 mt-8">
-          {/* This section is now empty as the projects have been moved to the carousel */}
-        </div>
-      </MotionSection>
-
       {/* Experience Section */}
-      <MotionSection id="experience" dataSection="experience" className="section container-custom">
-        <WorkTimeline />
-      </MotionSection>
-
-      {/* Education Section */}
-      <MotionSection id="education" dataSection="education" className="section container-custom">
-        <motion.h2
-          className="text-4xl md:text-5xl font-serif font-medium mb-12 md:mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block">My </span>
-          <span className="inline-block gradient-text from-blue-500 to-purple-600">Education</span>
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <section id="experience" className="py-20 md:py-28 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
           <motion.div
-            className="glass-card hover-lift p-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <motion.div
-                className="p-2 rounded-md bg-gradient-to-r from-blue-400 to-blue-600 text-white"
-                whileHover={{ scale: 1.05 }}
-              >
-                <GraduationCap className="h-5 w-5" />
-              </motion.div>
-              <h3 className="text-lg font-medium">Manipal Institute of Technology</h3>
-            </div>
-            <p className="text-muted-foreground">
-              Bachelor of Technology | Information Technology (minor in Digital Marketing) | 2019 - 2023
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Experience</h2>
           </motion.div>
+
+          <div className="space-y-12">
+            {/* Bajaj Finserv Health */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="border-l-2 border-gray-900 pl-6 md:pl-8"
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold">Bajaj Finserv Health</h3>
+                  <p className="text-gray-600">Product Manager (Promoted from APM)</p>
+                </div>
+              </div>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
+                  Owned multiple products across patients, doctors, support teams, and chatbot systems
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
+                  <span><strong>Scaled claims 3X</strong> (2.4L to 7L+)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
+                  Improved First Time Right: 65% to 80%
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
+                  Reduced drop-offs 15%
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
+                  Built AI/OCR-based validation system
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Specxy */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="border-l-2 border-gray-300 pl-6 md:pl-8"
+            >
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold">Specxy</h3>
+                  <p className="text-gray-600">Founder</p>
+                </div>
+              </div>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
+                  Refurbished eyewear startup
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
+                  Built supply-demand matching model
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
+                  <strong>Hult Prize finalist</strong>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* How I Think Section */}
+      <section id="thinking" className="py-20 md:py-28 px-4 md:px-6 bg-gray-900 text-white">
+        <div className="max-w-5xl mx-auto">
           <motion.div
-            className="glass-card hover-lift p-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="flex items-center gap-3 mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">How I Think</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {principles.map((principle, index) => (
               <motion.div
-                className="p-2 rounded-md bg-gradient-to-r from-purple-400 to-purple-600 text-white"
-                whileHover={{ scale: 1.05 }}
+                key={principle.text}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="flex items-center gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
               >
-                <Award className="h-5 w-5" />
+                <principle.icon className="w-5 h-5 text-gray-400 flex-shrink-0" />
+                <span className="font-medium">{principle.text}</span>
               </motion.div>
-              <h3 className="text-lg font-medium">Indian School of Business</h3>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Proof / Highlights Section */}
+      <section className="py-20 md:py-28 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Proof Points</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {proofPoints.map((point, index) => (
+              <motion.div
+                key={point.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl md:text-5xl font-bold mb-2">{point.metric}</div>
+                <div className="text-sm text-gray-500">{point.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Currently Exploring Section */}
+      <section className="py-16 px-4 md:px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <p className="text-sm text-gray-500 uppercase tracking-wide mb-4">Currently Exploring</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
+                Gamified fitness (Bijlee)
+              </span>
+              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
+                Personal finance infra (EZBill)
+              </span>
+              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
+                Offline distribution systems
+              </span>
             </div>
-            <p className="text-muted-foreground">
-              Executive Program Certification | Product Management | Feb 2024 - May 2024
-            </p>
           </motion.div>
         </div>
-      </MotionSection>
-
-      {/* Skills Section */}
-      <MotionSection id="skills" dataSection="skills" className="section container-custom">
-        <motion.h2
-          className="text-4xl md:text-5xl font-serif font-medium mb-12 md:mb-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <span className="inline-block">Outside </span>
-          <span className="inline-block gradient-text from-blue-500 to-purple-600">Work</span>
-        </motion.h2>
-
-        {/* Image Collage Grid - Masonry Style */}
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {/* Hiking image */}
-            <motion.div 
-              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/images/omkar-hiking.jpeg"
-                alt="Adventure and hiking"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            {/* Casual image */}
-            <motion.div 
-              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/images/omkar-casual.jpeg"
-                alt="Lifestyle and casual moments"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            {/* Biking image */}
-            <motion.div 
-              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img 
-                src="/images/omkar-biking.jpeg" 
-                alt="Biking passion" 
-                className="w-full h-full object-cover" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-
-            {/* Speaking image */}
-            <motion.div 
-              className="rounded-2xl overflow-hidden relative aspect-[3/4] shadow-lg"
-              whileHover={{ scale: 1.02, y: -4 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/images/omkar-speaking.jpeg"
-                alt="Speaking and leadership"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Interest Tags - Clean Design */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex flex-wrap justify-center gap-3">
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">🏸</span>
-              Zonal Badminton Champion
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">🏍️</span>
-              Roadtrip Enthusiast
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">🌌</span>
-              Space & Cosmos Geek
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">📈</span>
-              Markets & Stats Analyst
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">⚽</span>
-              Barca Fanatic
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">📚</span>
-              Mystery Novel Buff
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">🥾</span>
-              Mountain Trekker
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="text-lg">🎯</span>
-              Strategic Thinker
-            </motion.span>
-          </div>
-        </motion.div>
-      </MotionSection>
+      </section>
 
       {/* Contact Section */}
-      <section id="contact" data-section="contact" className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-100 to-gray-50 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto mb-8 rounded-2xl overflow-hidden shadow-xl">
-            <Image
-              src="/omkar-speaking.jpeg"
-              alt="Omkar Patil Speaking"
-              width={192}
-              height={192}
-              className="object-cover w-full h-full"
-            />
-          </div>
+      <section id="contact" className="py-20 md:py-28 px-4 md:px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let&apos;s Talk</h2>
+            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+              If you&apos;re building something interesting, I&apos;d love to connect.
+            </p>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
-            Yay! <span className="text-blue-600">You made it</span> this far
-          </h2>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+              <motion.a
+                href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all w-full sm:w-auto"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Get in Touch
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+            </div>
 
-          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-lg mx-auto leading-relaxed">
-            Clearly, we vibe. Let's make cool stuff together.
-          </p>
-
-          {/* Primary CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-            <motion.a
-              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary w-full sm:w-auto"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Let's Connect
-            </motion.a>
-            <motion.a
-              href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary w-full sm:w-auto"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <FileText className="h-5 w-5 mr-2" />
-              View Resume
-            </motion.a>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-            <motion.a
-              href="mailto:omkarpatilswork@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all"
-              whileHover={{ y: -3, scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Mail className="h-5 w-5" />
-            </motion.a>
-            <motion.a
-              href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-blue-600 hover:shadow-lg transition-all"
-              whileHover={{ y: -3, scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Linkedin className="h-5 w-5" />
-            </motion.a>
-            <motion.a
-              href="https://github.com/omkarpatilswork"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-md text-gray-600 hover:text-gray-900 hover:shadow-lg transition-all"
-              whileHover={{ y: -3, scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Github className="h-5 w-5" />
-            </motion.a>
-          </div>
-        </div>
-
-        {/* Background effects */}
-        <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
-          <div className="absolute -right-20 -bottom-20 w-64 md:w-96 h-64 md:h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute right-1/4 bottom-1/3 w-48 md:w-80 h-48 md:h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute left-1/4 top-1/3 w-40 md:w-72 h-40 md:h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div className="flex items-center justify-center gap-6">
+              <a
+                href="mailto:omkarpatilswork@gmail.com"
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                <span className="text-sm">Email</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+                <span className="text-sm">LinkedIn</span>
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 md:py-10 bg-gray-900 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            {/* Logo & Copyright */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-gray-900 font-bold">
-                O
-              </div>
-              <span className="text-gray-400 text-sm">© 2025 Omkar Patil. All rights reserved.</span>
-            </div>
-
-            {/* Footer Links */}
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm">
-              <Link href="#portfolio" className="text-gray-400 hover:text-white transition-colors">
-                Portfolio
-              </Link>
-              <Link href="#experience" className="text-gray-400 hover:text-white transition-colors">
-                Experience
-              </Link>
-              <a
-                href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                Resume
-              </a>
-            </div>
-
-            {/* Footer CTA */}
-            <motion.a
-              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+      <footer className="py-8 px-4 md:px-6 border-t border-gray-100">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-gray-500">
+            2025 Omkar Patil. Building in public.
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:omkarpatilswork@gmail.com"
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition-all text-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+              className="text-gray-400 hover:text-gray-600 transition-colors"
             >
-              <Mail className="w-4 h-4" />
-              Contact Me
-            </motion.a>
+              <Linkedin className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </footer>
-    </main>
+    </div>
   )
 }
