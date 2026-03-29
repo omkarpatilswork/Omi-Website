@@ -2,20 +2,10 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import {
-  Linkedin,
-  Mail,
-  ArrowRight,
-  ExternalLink,
-  Menu,
-  X,
-  Zap,
-  TrendingUp,
-  Target,
-  Rocket,
-  AlertCircle,
-} from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
+import { Linkedin, Mail, Github, FileText, ArrowUpRight, Menu, X } from "lucide-react"
+import { WorkTimeline } from "@/components/work-timeline"
 
 export default function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -24,90 +14,89 @@ export default function HomePage() {
     setMobileMenuOpen(false)
   }
 
-  // What I'm Building data
   const ventures = [
     {
-      name: "EZBill",
-      tagline: "All your bills in one place. Track, split, reimburse, and never lose a receipt.",
-      details: [
-        "Aggregates bills from SMS, email, WhatsApp",
-        "OCR for physical receipts",
-        "Focus: solving real-world financial friction",
-      ],
+      name: "Specxy",
+      description: "Affordable prescription eyewear for India's underserved 500M+ market",
       status: "Primary Focus",
-      accent: "bg-emerald-500",
     },
     {
-      name: "Bijlee",
-      tagline: "Gamifying fitness through community and competition.",
-      details: [
-        "Started as a run club in Pune",
-        "Building a platform to track runs, compete, and earn rewards",
-        "Expanding into sports, trekking, and corporate wellness",
-        "Partnering with brands for distribution",
-      ],
+      name: "Athlos",
+      description: "AI-powered fitness coaching that adapts to your body and schedule",
       status: "Building",
-      accent: "bg-amber-500",
-    },
-    {
-      name: "Jersey Drip",
-      tagline: "Building a hybrid commerce distribution system.",
-      details: [
-        "D2C + offline vending-style kiosks in gyms/sports centers",
-        "Dropshipping via jerseydrip.shop",
-        "2L+ revenue through lean execution",
-      ],
-      status: "Revenue",
-      accent: "bg-blue-500",
     },
   ]
 
-  // How I Think principles
-  const principles = [
-    { icon: TrendingUp, text: "Distribution > Product" },
-    { icon: Target, text: "Start offline, scale digitally" },
-    { icon: Zap, text: "Build for real behavior, not ideal users" },
-    { icon: Rocket, text: "Speed > Perfection" },
-    { icon: AlertCircle, text: "If it doesn't grow, it's wrong" },
-  ]
-
-  // Proof points
-  const proofPoints = [
-    { metric: "3X", label: "Growth in production system" },
-    { metric: "2L+", label: "Revenue from side venture" },
-    { metric: "Multiple", label: "0 to 1 product builds" },
-    { metric: "3", label: "Domains: fintech, commerce, community" },
+  const outsideWorkInterests = [
+    { emoji: "🏸", label: "Zonal Badminton Champion" },
+    { emoji: "🏍️", label: "Roadtrip Enthusiast" },
+    { emoji: "🌌", label: "Space & Cosmos Geek" },
+    { emoji: "📈", label: "Markets & Stats Analyst" },
+    { emoji: "⚽", label: "Barca Fanatic" },
+    { emoji: "📚", label: "Mystery Novel Buff" },
+    { emoji: "🥾", label: "Mountain Trekker" },
+    { emoji: "🎯", label: "Strategic Thinker" },
   ]
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 md:px-6">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="font-bold text-xl tracking-tight">
-              Omkar<span className="text-gray-400">.</span>
+        <div className="max-w-6xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-xl font-bold text-gray-900">
+              <div className="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center text-white font-bold">
+                O
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="#building" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                Building
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="#about" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                About
+              </Link>
+              <Link href="#ventures" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Ventures
+              </Link>
+              <Link href="/portfolio" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Portfolio
               </Link>
               <Link href="#experience" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                 Experience
               </Link>
-              <Link href="#thinking" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-                How I Think
+              <Link href="#outside-work" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Beyond Work
               </Link>
+              <Link href="#contact" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Contact
+              </Link>
+            </div>
+
+            {/* Desktop Social Icons */}
+            <div className="hidden md:flex items-center gap-3">
               <a
-                href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+                href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors"
+                className="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
               >
-                Contact
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:omkarpatilswork@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+              <a
+                href="https://github.com/omkarpatilswork"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-all"
+              >
+                <Github className="w-4 h-4" />
               </a>
             </div>
 
@@ -133,35 +122,35 @@ export default function HomePage() {
               className="md:hidden bg-white border-b border-gray-100"
             >
               <div className="px-4 py-4 space-y-3">
-                <Link
-                  href="#building"
-                  onClick={handleNavClick}
-                  className="block py-2 text-gray-600 hover:text-gray-900"
-                >
-                  Building
+                <Link href="#about" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
+                  About
                 </Link>
-                <Link
-                  href="#experience"
-                  onClick={handleNavClick}
-                  className="block py-2 text-gray-600 hover:text-gray-900"
-                >
+                <Link href="#ventures" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
+                  Ventures
+                </Link>
+                <Link href="/portfolio" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
+                  Portfolio
+                </Link>
+                <Link href="#experience" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
                   Experience
                 </Link>
-                <Link
-                  href="#thinking"
-                  onClick={handleNavClick}
-                  className="block py-2 text-gray-600 hover:text-gray-900"
-                >
-                  How I Think
+                <Link href="#outside-work" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
+                  Beyond Work
                 </Link>
-                <a
-                  href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block py-2 font-medium text-gray-900"
-                >
+                <Link href="#contact" onClick={handleNavClick} className="block py-2 text-gray-600 hover:text-gray-900">
                   Contact
-                </a>
+                </Link>
+                <div className="flex items-center gap-4 pt-2 border-t border-gray-100">
+                  <a href="https://www.linkedin.com/in/omkar-patil-757ab3194/" target="_blank" rel="noopener noreferrer" className="text-gray-600">
+                    <Linkedin className="w-5 h-5" />
+                  </a>
+                  <a href="mailto:omkarpatilswork@gmail.com" target="_blank" rel="noopener noreferrer" className="text-gray-600">
+                    <Mail className="w-5 h-5" />
+                  </a>
+                  <a href="https://github.com/omkarpatilswork" target="_blank" rel="noopener noreferrer" className="text-gray-600">
+                    <Github className="w-5 h-5" />
+                  </a>
+                </div>
               </div>
             </motion.div>
           )}
@@ -169,337 +158,373 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
+      <section id="about" className="pt-32 pb-16 md:pt-40 md:pb-24 px-4">
+        <div className="max-w-4xl mx-auto">
           <motion.div
+            className="flex flex-col md:flex-row items-center gap-8 md:gap-12 mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {/* Small proof line */}
-            <p className="text-sm text-gray-500 mb-6 tracking-wide">
-              3X product growth &bull; Multiple 0 to 1 builds &bull; Offline + digital distribution
-            </p>
-
-            {/* Main headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
-              I build products, communities,
-              <br />
-              and distribution from 0 to 1.
-            </h1>
-
-            {/* Subheading */}
-            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-10 leading-relaxed">
-              Product Manager turned founder. Built and scaled products at Bajaj Finserv Health (3X growth), 
-              now building ventures across fintech, commerce, and fitness.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <motion.a
-                href="#building"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                View What I&apos;m Building
-                <ArrowRight className="w-4 h-4" />
-              </motion.a>
+            {/* Ghibli Image */}
+            <div className="relative">
+              <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-gray-100 shadow-xl">
+                <Image
+                  src="/omkar-ghibli.jpeg"
+                  alt="Omkar Patil"
+                  width={192}
+                  height={192}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <motion.a
                 href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 text-gray-900 font-medium rounded-full hover:bg-gray-50 transition-all"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="absolute -bottom-2 -right-2 px-3 py-1.5 bg-green-500 text-white text-xs font-medium rounded-full shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Work With Me
+                Open for Collab
               </motion.a>
+            </div>
+
+            {/* Intro Text */}
+            <div className="text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                I am Omkar
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 mb-2">
+                Welcome to my digital space
+              </p>
+              <p className="text-gray-500 max-w-lg">
+                Product Manager turned founder. I build products, communities, and distribution from 0 to 1.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Tagline */}
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link href="#ventures">
+              <p className="text-xl md:text-2xl text-gray-700 hover:text-blue-600 transition-colors cursor-pointer">
+                I build things users love. And sometimes, I sell them too.
+              </p>
+            </Link>
+          </motion.div>
+
+          {/* Quick Stats */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="text-center p-4 bg-gray-50 rounded-xl">
+              <div className="text-2xl md:text-3xl font-bold text-gray-900">3X</div>
+              <div className="text-sm text-gray-500">Growth Delivered</div>
+            </div>
+            <div className="text-center p-4 bg-gray-50 rounded-xl">
+              <div className="text-2xl md:text-3xl font-bold text-gray-900">2L+</div>
+              <div className="text-sm text-gray-500">Users Impacted</div>
+            </div>
+            <div className="text-center p-4 bg-gray-50 rounded-xl">
+              <div className="text-2xl md:text-3xl font-bold text-gray-900">3</div>
+              <div className="text-sm text-gray-500">Ventures Built</div>
+            </div>
+            <div className="text-center p-4 bg-gray-50 rounded-xl">
+              <div className="text-2xl md:text-3xl font-bold text-gray-900">5+</div>
+              <div className="text-sm text-gray-500">Product Concepts</div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* What I'm Building Section */}
-      <section id="building" className="py-20 md:py-28 px-4 md:px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+      {/* Ventures Section */}
+      <section id="ventures" className="py-16 md:py-24 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
           <motion.div
+            className="mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What I&apos;m Building</h2>
-            <p className="text-gray-600 mb-12 max-w-xl">
-              Currently exploring multiple bets across fintech, fitness, and commerce.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Startups Built</h2>
+            <p className="text-gray-600">Current ventures and side projects I am actively building.</p>
           </motion.div>
 
-          <div className="grid gap-6">
+          <div className="space-y-4">
             {ventures.map((venture, index) => (
               <motion.div
                 key={venture.name}
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all"
+                viewport={{ once: true }}
+                whileHover={{ y: -2 }}
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <h3 className="text-xl md:text-2xl font-bold">{venture.name}</h3>
-                      <span className={`px-2 py-1 text-xs font-medium text-white rounded-full ${venture.accent}`}>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-900">{venture.name}</h3>
+                      <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
+                        venture.status === "Primary Focus" 
+                          ? "bg-green-100 text-green-700"
+                          : "bg-blue-100 text-blue-700"
+                      }`}>
                         {venture.status}
                       </span>
                     </div>
-                    <p className="text-gray-600 mb-4 text-lg">{venture.tagline}</p>
-                    <ul className="space-y-2">
-                      {venture.details.map((detail, i) => (
-                        <li key={i} className="flex items-start gap-2 text-gray-500 text-sm">
-                          <span className="text-gray-400 mt-1">-</span>
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-gray-600">{venture.description}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Portfolio Link */}
+          <motion.div
+            className="mt-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-colors"
+            >
+              View Product Portfolio
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 md:py-28 px-4 md:px-6">
+      {/* Work Experience Section */}
+      <section id="experience" className="py-16 md:py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <WorkTimeline />
+        </div>
+      </section>
+
+      {/* Outside Work Section */}
+      <section id="outside-work" className="py-16 md:py-24 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto">
           <motion.div
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Experience</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Outside Work</h2>
+            <p className="text-gray-600">There is more to life than just shipping features.</p>
           </motion.div>
 
-          <div className="space-y-12">
-            {/* Bajaj Finserv Health */}
+          {/* Photo Grid */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <motion.div 
+              className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="/images/omkar-hiking.jpeg"
+                alt="Adventure and hiking"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <motion.div 
+              className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="/images/omkar-casual.jpeg"
+                alt="Lifestyle"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+            <motion.div 
+              className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="/images/omkar-biking.jpeg" 
+                alt="Biking" 
+                className="w-full h-full object-cover" 
+              />
+            </motion.div>
+            <motion.div 
+              className="rounded-2xl overflow-hidden aspect-[3/4] shadow-lg"
+              whileHover={{ scale: 1.02, y: -4 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img
+                src="/images/omkar-speaking.jpeg"
+                alt="Speaking"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </motion.div>
+
+          {/* Interest Tags */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-3"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {outsideWorkInterests.map((interest) => (
+              <motion.span
+                key={interest.label}
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-full text-gray-700 text-sm font-medium shadow-sm hover:shadow-md hover:border-gray-300 transition-all"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="text-lg">{interest.emoji}</span>
+                {interest.label}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="py-16 md:py-24 px-4">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Education</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
             <motion.div
+              className="bg-gray-50 border border-gray-200 rounded-xl p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="border-l-2 border-gray-900 pl-6 md:pl-8"
+              viewport={{ once: true }}
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold">Bajaj Finserv Health</h3>
-                  <p className="text-gray-600">Product Manager (Promoted from APM)</p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
-                  Owned multiple products across patients, doctors, support teams, and chatbot systems
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
-                  <span><strong>Scaled claims 3X</strong> (2.4L to 7L+)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
-                  Improved First Time Right: 65% to 80%
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
-                  Reduced drop-offs 15%
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-900 rounded-full mt-2 flex-shrink-0" />
-                  Built AI/OCR-based validation system
-                </li>
-              </ul>
+              <h3 className="font-semibold text-gray-900 mb-1">Manipal Institute of Technology</h3>
+              <p className="text-gray-600 text-sm mb-2">Bachelor of Technology</p>
+              <p className="text-gray-500 text-sm">Information Technology (Minor in Digital Marketing)</p>
+              <p className="text-gray-400 text-sm mt-2">2019 - 2023</p>
             </motion.div>
 
-            {/* Specxy */}
             <motion.div
+              className="bg-gray-50 border border-gray-200 rounded-xl p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="border-l-2 border-gray-300 pl-6 md:pl-8"
+              viewport={{ once: true }}
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold">Specxy</h3>
-                  <p className="text-gray-600">Founder</p>
-                </div>
-              </div>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
-                  Refurbished eyewear startup
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
-                  Built supply-demand matching model
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2 flex-shrink-0" />
-                  <strong>Hult Prize finalist</strong>
-                </li>
-              </ul>
+              <h3 className="font-semibold text-gray-900 mb-1">Indian School of Business</h3>
+              <p className="text-gray-600 text-sm mb-2">Executive Program Certification</p>
+              <p className="text-gray-500 text-sm">Product Management</p>
+              <p className="text-gray-400 text-sm mt-2">Feb 2024 - May 2024</p>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* How I Think Section */}
-      <section id="thinking" className="py-20 md:py-28 px-4 md:px-6 bg-gray-900 text-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">How I Think</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {principles.map((principle, index) => (
-              <motion.div
-                key={principle.text}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex items-center gap-4 p-5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 transition-colors"
-              >
-                <principle.icon className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                <span className="font-medium">{principle.text}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Proof / Highlights Section */}
-      <section className="py-20 md:py-28 px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Proof Points</h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {proofPoints.map((point, index) => (
-              <motion.div
-                key={point.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-bold mb-2">{point.metric}</div>
-                <div className="text-sm text-gray-500">{point.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Currently Exploring Section */}
-      <section className="py-16 px-4 md:px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <p className="text-sm text-gray-500 uppercase tracking-wide mb-4">Currently Exploring</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
-                Gamified fitness (Bijlee)
-              </span>
-              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
-                Personal finance infra (EZBill)
-              </span>
-              <span className="px-4 py-2 bg-white rounded-full text-sm border border-gray-200">
-                Offline distribution systems
-              </span>
-            </div>
-          </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-28 px-4 md:px-6">
-        <div className="max-w-5xl mx-auto text-center">
+      <section id="contact" className="py-16 md:py-24 px-4 bg-gray-900 text-white">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
+            className="relative w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full overflow-hidden border-4 border-white/20"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/omkar-speaking.jpeg"
+              alt="Omkar Patil"
+              width={160}
+              height={160}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let&apos;s Talk</h2>
-            <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              If you&apos;re building something interesting, I&apos;d love to connect.
-            </p>
+            You made it this far
+          </motion.h2>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-              <motion.a
-                href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white font-medium rounded-full hover:bg-gray-800 transition-all w-full sm:w-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Get in Touch
-                <ExternalLink className="w-4 h-4" />
-              </motion.a>
-            </div>
+          <motion.p
+            className="text-lg text-gray-300 mb-8 max-w-lg mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            If you are building something interesting, I would love to connect.
+          </motion.p>
 
-            <div className="flex items-center justify-center gap-6">
-              <a
-                href="mailto:omkarpatilswork@gmail.com"
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-                <span className="text-sm">Email</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span className="text-sm">LinkedIn</span>
-              </a>
-            </div>
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href="https://forms.gle/SzkhhaHb9ZA3ynGg7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-medium rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Let us Connect
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-transparent text-white font-medium rounded-full border border-white/30 hover:bg-white/10 transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              View Resume
+            </a>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 md:px-6 border-t border-gray-100">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            2025 Omkar Patil. Building in public.
-          </p>
-          <div className="flex items-center gap-4">
+          <motion.div
+            className="flex items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             <a
               href="mailto:omkarpatilswork@gmail.com"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
             >
               <Mail className="w-5 h-5" />
             </a>
@@ -507,13 +532,44 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/omkar-patil-757ab3194/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="w-11 h-11 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
             >
               <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="https://github.com/omkarpatilswork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-11 h-11 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 px-4 bg-gray-900 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+          <p>2025 Omkar Patil. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/portfolio" className="hover:text-gray-300 transition-colors">
+              Portfolio
+            </Link>
+            <Link href="#experience" className="hover:text-gray-300 transition-colors">
+              Experience
+            </Link>
+            <a
+              href="https://drive.google.com/file/d/1rRZLZeJ3l7qUKH6T6siuFch4RnqObo-q/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors"
+            >
+              Resume
             </a>
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }

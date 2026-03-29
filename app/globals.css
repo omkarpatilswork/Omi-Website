@@ -142,3 +142,13 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #9ca3af;
 }
+
+/* Glass card effect */
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r bg-clip-text text-transparent;
+}
