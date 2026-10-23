@@ -418,6 +418,48 @@ a.venture:hover > *{color:var(--accent-ink)}
 @media (max-width:1000px){.bj-run,.bj-hyrox,.bj-founders,.bj-racked{grid-column:1 / -1}.bj-hyrox{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}.bj-tag{aspect-ratio:auto;height:100%}}
 @media (max-width:640px){.bj-hyrox{display:flex}.bj-tag{aspect-ratio:680/400}.racked-art{grid-template-columns:1fr;justify-items:start}.racked-steps{grid-template-columns:1fr}}
 
+
+/* ================= v5: startups list, case studies, products ================= */
+.idx.past{margin-top:28px}
+.idx.past a{grid-template-columns:110px minmax(0,1fr) minmax(0,1.4fr) 150px}
+@media (max-width:760px){.idx.past a{grid-template-columns:minmax(0,1fr) auto}}
+.cs-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px}
+.cs{display:flex;flex-direction:column;gap:10px;text-decoration:none;min-width:0}
+.cs-img{aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.cs-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.cs:hover .cs-img img{transform:scale(1.05)}
+.cs-tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.cs h3{font-size:var(--step-1)}
+.cs p{color:var(--muted);font-size:.92rem}
+.cs-go{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:auto;transition:color .25s}
+.cs:hover .cs-go{color:var(--accent)}
+@media (max-width:1000px){.cs-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.cs-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.cs{flex:0 0 68%;scroll-snap-align:start}}
+.pr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pr{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;min-width:0;transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.pr:hover{transform:translateY(-6px);box-shadow:0 40px 70px -45px rgba(0,0,0,.5)}
+.pr-media{position:relative;height:280px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;gap:14px;padding-top:28px}
+.pr-gold{background:linear-gradient(160deg,#FFF4D6,#F6D98A)}
+.pr-hs{background:linear-gradient(160deg,#E8EEFF,#C9D6FF)}
+.pr-oj{background:linear-gradient(160deg,#1a1a1a,#050505);display:block;padding:24px 22px 0}
+.pr-media .phone{width:132px;padding:7px;border-radius:28px;transition:transform .8s var(--ease)}
+.pr-media .phone::before{width:40px;height:12px;top:12px}
+.pr-media .phone .screen{border-radius:22px;background:#fff}
+.pr-media .phone:nth-child(2){transform:translateY(26px)}
+.pr:hover .pr-media .phone:nth-child(1){transform:translateY(-10px)}
+.pr:hover .pr-media .phone:nth-child(2){transform:translateY(10px)}
+.pr-oj .browser{border-radius:10px;border:1px solid #2a2a2a;background:#000}
+.pr-oj .browser .bar{background:#111;border-color:#2a2a2a;padding:7px 10px}
+.pr-oj .browser .bar span{background:#000;color:#888}
+.pr-oj .browser .bar i{background:#333;width:8px;height:8px}
+.pr-oj .phone{position:absolute;right:18px;bottom:-40px;width:96px}
+.pr:hover .pr-oj .phone{transform:translateY(-14px)}
+.pr-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pr-body h3{font-size:var(--step-2);font-variation-settings:"wdth" 112;line-height:1}
+.pr-body p{color:var(--muted);font-size:.95rem}
+.pr .f-foot{margin-top:auto}
+.pr .f-links a:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (max-width:900px){.pr-grid{grid-template-columns:1fr}}
 /* reveal: elements stay readable at rest; JS adds motion only */
 .js [data-reveal]{transform:translateY(36px);opacity:.25;transition:transform 1.1s var(--ease),opacity 1.1s var(--ease)}
 .js [data-reveal].in{transform:none;opacity:1}
@@ -584,10 +626,11 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
   <div class="wrap">
     <a class="brand" href="#top"><b>OP</b>Omkar Patil</a>
     <ul>
-      <li><a href="#now">Now</a></li>
-      <li><a href="#index">Work</a></li>
+      <li><a href="#built">Startups</a></li>
       <li><a href="#record">Track record</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#cases">Case studies</a></li>
+      <li><a href="#products">Products</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="status" href="https://ezzbill.com" target="_blank" rel="noopener"><span class="dot"></span>Raising for EZZ BILL</a>
@@ -608,7 +651,7 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
         <p class="naval fade-in">If you can do both, you will be unstoppable. <span>Naval Ravikant</span></p>
         <p class="lede fade-in">I've spent six years doing both. Product Manager at Bajaj Finserv Health, five ventures since 2020, and now <a class="inline" href="https://ezzbill.com" target="_blank" rel="noopener">EZZ BILL</a>, the digital layer for bills.</p>
         <div class="row fade-in">
-          <a class="btn primary" href="#now">See the work <span class="arr">↓</span></a>
+          <a class="btn primary" href="#built">See the work <span class="arr">↓</span></a>
           <a class="btn" href="https://ezzbill.com" target="_blank" rel="noopener">ezzbill.com <span class="arr">↗</span></a>
         </div>
         <nav class="socials fade-in" aria-label="Social profiles">
@@ -639,12 +682,12 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
     </div>
   </div>
 
-  <!-- NOW: two featured -->
-  <section id="now" class="sec">
+  <!-- BUILT: startups -->
+  <section id="built" class="sec">
     <div class="wrap">
       <div class="sec-head slim">
-        <div class="eyebrow">Now · 2026</div>
-        <div class="t"><h2 data-reveal>Two things I'm building.</h2></div>
+        <div class="eyebrow">Startups · 2020 – 2026</div>
+        <div class="t"><h2 data-reveal>Everything I've built.</h2></div>
       </div>
       <div class="feature-grid">
         <article class="feature f-ezz" data-open="ezzbill" tabindex="0" role="button" aria-label="Open the EZZ BILL case study" data-reveal>
@@ -654,7 +697,7 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
             <div class="f-ring" aria-hidden="true"><i></i><i></i></div>
           </div>
           <div class="f-body">
-            <div class="f-meta"><span>Startup · Founder</span><span>2025 – now</span></div>
+            <div class="f-meta"><span>Startup · Founder · now</span><span>2025 – now</span></div>
             <h3>EZZ BILL</h3>
             <p>AirDrop for bills. Tap the table and the itemised bill is on your phone, then EZZ BILL shows where your money leaks.</p>
             <div class="f-foot">
@@ -669,9 +712,9 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
             <img class="f-tag" src="assets/hyrox-tag.webp" alt="" loading="lazy">
           </div>
           <div class="f-body">
-            <div class="f-meta"><span>Community · Founder</span><span>9 months, weekly</span></div>
+            <div class="f-meta"><span>Community · Founder · now</span><span>2026 – now</span></div>
             <h3>Bijlee</h3>
-            <p>Pune's community for runners, founders and builders. Weekly runs, a HYROX simulation with 7 brand partners, and the testing ground for NFC.</p>
+            <p>Pune's community for runners, founders and builders. Inside: the run club, HYROX Simulation, Bijlee Founders and Racked.</p>
             <div class="f-foot">
               <span class="f-open">Open case study <span class="arr">→</span></span>
               <span class="f-links"><a href="https://www.bijlee.run/" target="_blank" rel="noopener">bijlee.run ↗</a><a href="https://www.instagram.com/bijlee.run/" target="_blank" rel="noopener">@bijlee.run ↗</a></span>
@@ -679,44 +722,15 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- INDEX -->
-  <section id="index" class="sec" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head slim">
-        <div class="eyebrow">Index · 2019 – 2026</div>
-        <div class="t"><h2 data-reveal>Everything I've built.</h2></div>
-      </div>
-      <div class="filters" role="group" aria-label="Filter work">
-        <button type="button" id="fAll" aria-pressed="true" data-f="all">All <sup>16</sup></button>
-        <button type="button" id="fStart" aria-pressed="false" data-f="startup">Startups <sup>4</sup></button>
-        <button type="button" id="fComm" aria-pressed="false" data-f="community">Community <sup>4</sup></button>
-        <button type="button" id="fProd" aria-pressed="false" data-f="product">Products <sup>3</sup></button>
-        <button type="button" id="fStrat" aria-pressed="false" data-f="strategy">Strategy <sup>5</sup></button>
-      </div>
-      <ol class="idx" id="idx">
-        <li data-cat="startup"><a href="#ezzbill" data-open="ezzbill" data-img="assets/ezz-tap-guest.webp"><span class="i-yr">2025–</span><span class="i-nm">EZZ BILL</span><span class="i-ds">AirDrop for bills · raising pre-seed</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="community"><a href="#bijlee" data-open="bijlee" data-img="assets/bijlee-home.webp"><span class="i-yr">2026–</span><span class="i-nm">Bijlee Run Club</span><span class="i-ds">Weekly runs and sport for Pune's builders</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="community"><a href="#bijlee" data-open="bijlee" data-sub="bj-hyrox" data-img="assets/hyrox-tag.webp"><span class="i-yr">Sep 2026</span><span class="i-nm">HYROX Simulation</span><span class="i-ds">Pune's first mini-HYROX · 7 brand partners</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="community"><a href="#bijlee" data-open="bijlee" data-sub="bj-founders" data-img="assets/founders-site.webp"><span class="i-yr">2026–</span><span class="i-nm">Bijlee Founders</span><span class="i-ds">Play. Connect. Build.</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="community"><a href="#bijlee" data-open="bijlee" data-sub="racked" data-img="assets/ezz-staff.webp"><span class="i-yr">2026</span><span class="i-nm">Racked by Bijlee</span><span class="i-ds">Gamified gym on NFC tags · validates EZZ BILL</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="product"><a href="#goldloop" data-open="goldloop" data-img="assets/gl-home.webp"><span class="i-yr">Prototype</span><span class="i-nm">GoldLoop</span><span class="i-ds">Digital gold for first-time savers</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="product"><a href="#health-saathi" data-open="health-saathi" data-img="assets/hs-chat.webp"><span class="i-yr">AI agent</span><span class="i-nm">Health Saathi</span><span class="i-ds">LLM support agent for lab bookings</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="product"><a href="#oj-fitness" data-open="oj-fitness" data-img="assets/oj-desktop.webp"><span class="i-yr">Client site</span><span class="i-nm">OJ Does Fitness</span><span class="i-ds">Conversion-first site for a fitness coach</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="startup"><a href="https://jersey-drip.mini.site/?path=%2F" target="_blank" rel="noopener" data-img=""><span class="i-yr">2020–</span><span class="i-nm">Jersey Drip</span><span class="i-ds">₹7L+ revenue · 400+ orders on Swiggy Minis</span><span class="i-go">Store ↗</span></a></li>
-        <li data-cat="startup"><a href="#specxy" data-open="specxy" data-img="assets/specxy-site.webp"><span class="i-yr">2022–23</span><span class="i-nm">Specxy</span><span class="i-ds">Refurbished eyewear · Hult Prize finalist</span><span class="i-go">Case study →</span></a></li>
-        <li data-cat="startup"><a href="https://www.instagram.com/virtual.ipl.auction/" target="_blank" rel="noopener" data-img=""><span class="i-yr">2021–22</span><span class="i-nm">Virtual IPL Auctions</span><span class="i-ds">1K+ followers · 50+ online events</span><span class="i-go">Instagram ↗</span></a></li>
-        <li data-cat="strategy"><a href="https://drive.google.com/file/d/1en9oXpYz8kYTkZEE5Dg5E7n5DikGBHkZ/view?usp=sharing" target="_blank" rel="noopener" data-img="assets/cs-rapido.webp"><span class="i-yr">Strategy</span><span class="i-nm">Rapido × Metro</span><span class="i-ds">One fare, home to office · 3× rides per user</span><span class="i-go">Document ↗</span></a></li>
-        <li data-cat="strategy"><a href="https://drive.google.com/file/d/1iN-Jf1gIHZ3DE9ISFUb4SUG5xlPHTjIn/view?usp=sharing" target="_blank" rel="noopener" data-img="assets/cs-youtube.webp"><span class="i-yr">Strategy</span><span class="i-nm">YouTube Premium Mini</span><span class="i-ds">Ad-free days for ₹7</span><span class="i-go">Document ↗</span></a></li>
-        <li data-cat="strategy"><a href="https://drive.google.com/file/d/1mvGI18qmTnpLtFz6F28QLv7BVXaKMz98/view?usp=sharing" target="_blank" rel="noopener" data-img="assets/cs-cars24.webp"><span class="i-yr">Strategy</span><span class="i-nm">CARS24 Partners</span><span class="i-ds">Business review of the dealer app</span><span class="i-go">Document ↗</span></a></li>
-        <li data-cat="strategy"><a href="https://drive.google.com/file/d/1WrPXRc9g1EcgKhtN3nKP6VQXGZSPUHPG/view?usp=sharing" target="_blank" rel="noopener" data-img="assets/cs-foam.webp"><span class="i-yr">Strategy</span><span class="i-nm">Foam Balls Dispenser</span><span class="i-ds">Winner, E-Cell MIT Ideathon</span><span class="i-go">Document ↗</span></a></li>
-        <li data-cat="strategy"><a href="https://drive.google.com/file/d/1ublI5u1xQ8rupHWlxKZ45Sd0Kxs-IUra/view?usp=sharing" target="_blank" rel="noopener" data-img="assets/cs-acropolis.webp"><span class="i-yr">Strategy</span><span class="i-nm">Acropolis</span><span class="i-ds">Finalist, NASA Ames Space Settlement Contest</span><span class="i-go">Document ↗</span></a></li>
+      <ol class="idx past" id="idx">
+        <li><a href="https://jerseydrip.shop/" target="_blank" rel="noopener" data-img=""><span class="i-yr">2020 – now</span><span class="i-nm">Jersey Drip</span><span class="i-ds">Student-led sportswear brand · ₹7L+ revenue, 400+ orders</span><span class="i-go">jerseydrip.shop ↗</span></a></li>
+        <li><a href="#specxy" data-open="specxy" data-img="assets/specxy-site.webp"><span class="i-yr">2022 – 23</span><span class="i-nm">Specxy</span><span class="i-ds">Refurbished eyewear · Hult Prize regional finalist</span><span class="i-go">Case study →</span></a></li>
+        <li><a href="https://www.instagram.com/virtual.ipl.auction/" target="_blank" rel="noopener" data-img=""><span class="i-yr">2021 – 22</span><span class="i-nm">Virtual IPL Auctions</span><span class="i-ds">IPL auction game · 1K+ followers, 50+ events</span><span class="i-go">Instagram ↗</span></a></li>
       </ol>
       <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
     </div>
   </section>
+
 
 <!-- RECEIPT -->
   <section id="record" class="ledger sec">
@@ -725,47 +739,28 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
         <div class="receipt-grid">
           <div class="receipt-copy">
             <div class="eyebrow">Track record · 2019 to 2026</div>
-            <h2 data-reveal>Itemised, because that's how I think.</h2>
-            <p class="lede muted" data-reveal>Every number here comes from shipped work: a health-claims product used by millions, a jersey brand I started in college, a community I run every week, and competitions where the ideas held up under judges.</p>
+            <h2 data-reveal>Itemised.</h2>
+            <p class="lede muted" data-reveal>Six years of work, on one receipt.</p>
             <div class="row" data-reveal><a class="btn" href="#experience">How I got these <span class="arr">↓</span></a></div>
           </div>
           <div class="receipt-wrap">
             <div class="printer" aria-hidden="true"><span></span></div>
             <div class="receipt" id="receipt">
               <div class="c big">OMKAR PATIL</div>
-              <div class="c">Product · Growth · Founder</div>
               <div class="c">Pune, IN · 2019 → 2026</div>
               <hr>
-              <div class="grp">Bajaj Finserv Health · PM</div>
-              <div class="li"><span>Claims automated / month</span><b>20,000+</b></div>
-              <div class="li"><span>Reimbursement growth</span><b>3×</b></div>
-              <div class="li"><span>Monthly claims, in 6 months</span><b>65K→95K</b></div>
-              <div class="li"><span>Saved / yr, WhatsApp bot + STP</span><b>₹1.4 Cr</b></div>
-              <div class="li"><span>Payment funnel conversion</span><b>+15%</b></div>
-              <div class="li"><span>Manual review time, OCR</span><b>−40%</b></div>
-              <div class="li"><span>CSAT</span><b>+22%</b></div>
-              <div class="li"><span>HackRx registrations</span><b>20,000+</b></div>
-              <div class="grp">Ventures</div>
+              <div class="li"><span>Health claims automated / month</span><b>20,000+</b></div>
+              <div class="li"><span>Saved a year at Bajaj Finserv</span><b>₹1.4 Cr</b></div>
+              <div class="li"><span>Claims reimbursement growth</span><b>3×</b></div>
               <div class="li"><span>Jersey Drip revenue</span><b>₹7L+</b></div>
-              <div class="li"><span>Swiggy Minis orders</span><b>400+</b></div>
-              <div class="li"><span>Auction game followers</span><b>1,000+</b></div>
-              <div class="grp">Community · Bijlee</div>
-              <div class="li"><span>Months of weekly sessions</span><b>9</b></div>
-              <div class="li"><span>HYROX sim brand partners</span><b>7</b></div>
-              <div class="li"><span>Venue &amp; brand collabs</span><b>6+</b></div>
-              <div class="grp">Competitions</div>
-              <div class="li"><span>Pitch Tank, Manipal E-Summit</span><b>WINNER</b></div>
-              <div class="li"><span>Hult Prize MAHE · Specxy</span><b>1ST R-UP</b></div>
-              <div class="li"><span>Hult Prize Regional, Dhaka</span><b>FINALIST</b></div>
+              <div class="li"><span>Hult Prize · Specxy</span><b>FINALIST</b></div>
               <div class="li"><span>NASA Ames Space Settlement</span><b>FINALIST</b></div>
-              <div class="li"><span>E-Cell MIT Ideathon</span><b>WINNER</b></div>
-              <hr>
+              <div class="li"><span>Bijlee, every week</span><b>9 MONTHS</b></div>
               <div class="li"><span>EZZ BILL commits</span><b>677+</b></div>
-              <div class="li total"><span>Founders on payroll</span><b>1</b></div>
-              <div class="li pending"><span>Next item: EZZ BILL</span><b>FUNDING</b></div>
               <hr>
+              <div class="li pending total"><span>Next item: EZZ BILL</span><b>FUNDING</b></div>
               <div class="barcode" aria-hidden="true"></div>
-              <div class="c">omkarpatil.in · thank you, visit again</div>
+              <div class="c">thank you, visit again</div>
               <div class="stamp" aria-hidden="true">Shipped</div>
             </div>
           </div>
@@ -830,6 +825,92 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
       </div>
     </div>
   </section>
+
+  <!-- CASE STUDIES -->
+  <section id="cases" class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head slim">
+        <div class="eyebrow">Product case studies</div>
+        <div class="t"><h2 data-reveal>Product thinking, on paper.</h2></div>
+      </div>
+      <div class="cs-grid">
+        <a class="cs" href="https://drive.google.com/file/d/1en9oXpYz8kYTkZEE5Dg5E7n5DikGBHkZ/view?usp=sharing" target="_blank" rel="noopener" data-reveal>
+          <div class="cs-img"><img src="assets/cs-rapido.webp" alt="Rapido logo" loading="lazy"></div>
+          <span class="cs-tag">Mobility · 3× rides per user</span><h3>Rapido × Metro</h3>
+          <p>One fare from home to office, bundling the metro with first and last-mile rides.</p><span class="cs-go">Read ↗</span>
+        </a>
+        <a class="cs" href="https://drive.google.com/file/d/1mvGI18qmTnpLtFz6F28QLv7BVXaKMz98/view?usp=sharing" target="_blank" rel="noopener" data-reveal>
+          <div class="cs-img" style="background:#fff"><img src="assets/cs-cars24.webp" alt="CARS24 Partners logo" loading="lazy" style="object-fit:contain;padding:16%"></div>
+          <span class="cs-tag">B2B · business review</span><h3>CARS24 Partners</h3>
+          <p>Fixing crashes, bidding failures and uploads in the dealer app.</p><span class="cs-go">Read ↗</span>
+        </a>
+        <a class="cs" href="https://drive.google.com/file/d/1iN-Jf1gIHZ3DE9ISFUb4SUG5xlPHTjIn/view?usp=sharing" target="_blank" rel="noopener" data-reveal>
+          <div class="cs-img"><img src="assets/cs-youtube.webp" alt="YouTube Premium Mini concept poster" loading="lazy"></div>
+          <span class="cs-tag">Pricing · ₹7 a day</span><h3>YouTube Premium Mini</h3>
+          <p>Ad-free days and weeks for people who won't pay monthly.</p><span class="cs-go">Read ↗</span>
+        </a>
+        <a class="cs" href="https://drive.google.com/file/d/1WrPXRc9g1EcgKhtN3nKP6VQXGZSPUHPG/view?usp=sharing" target="_blank" rel="noopener" data-reveal>
+          <div class="cs-img"><img src="assets/cs-foam.webp" alt="Foam ball dispenser concept" loading="lazy"></div>
+          <span class="cs-tag">Winner · E-Cell MIT Ideathon</span><h3>Foam Balls Dispenser</h3>
+          <p>Water-soluble shampoo balls in place of plastic bottles.</p><span class="cs-go">Read ↗</span>
+        </a>
+        <a class="cs" href="https://drive.google.com/file/d/1ublI5u1xQ8rupHWlxKZ45Sd0Kxs-IUra/view?usp=sharing" target="_blank" rel="noopener" data-reveal>
+          <div class="cs-img"><img src="assets/cs-acropolis.webp" alt="Acropolis space settlement poster" loading="lazy"></div>
+          <span class="cs-tag">Finalist · NASA Ames</span><h3>Acropolis</h3>
+          <p>A modular space habitat with closed-loop life support.</p><span class="cs-go">Read ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIBE-CODED PRODUCTS -->
+  <section id="products" class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head slim">
+        <div class="eyebrow">Vibe-coded products</div>
+        <div class="t">
+          <h2 data-reveal>Then I build them.</h2>
+          <p class="lede muted" data-reveal>PM ideas taken all the way to working software with v0, Lovable and Cursor.</p>
+        </div>
+      </div>
+      <div class="pr-grid">
+        <article class="pr" data-open="goldloop" tabindex="0" role="button" aria-label="Open the GoldLoop case study" data-reveal>
+          <div class="pr-media pr-gold">
+            <div class="phone"><div class="screen"><img src="assets/gl-home.webp" alt="" loading="lazy" style="height:100%;object-fit:cover;object-position:top"></div></div>
+            <div class="phone"><div class="screen"><img src="assets/gl-quest.webp" alt="" loading="lazy" style="height:100%;object-fit:cover;object-position:top"></div></div>
+          </div>
+          <div class="pr-body">
+            <span class="cs-tag">Fintech prototype</span><h3>GoldLoop</h3>
+            <p>Digital gold for first-time savers: round-ups, SIPs from ₹100 and gifting.</p>
+            <div class="f-foot"><span class="f-open">Case study <span class="arr">→</span></span><span class="f-links"><a href="https://github.com/omkarpatilswork/Gold-Loop" target="_blank" rel="noopener">GitHub ↗</a></span></div>
+          </div>
+        </article>
+        <article class="pr" data-open="oj-fitness" tabindex="0" role="button" aria-label="Open the OJ Shredz case study" data-reveal>
+          <div class="pr-media pr-oj">
+            <div class="browser"><div class="bar"><i></i><i></i><i></i><span>ojdoesfitness</span></div><div class="view"><img class="on" src="assets/oj-desktop.webp" alt="" loading="lazy"></div></div>
+            <div class="phone"><div class="screen"><img src="assets/oj-mobile.webp" alt="" loading="lazy" style="height:100%;object-fit:cover;object-position:top"></div></div>
+          </div>
+          <div class="pr-body">
+            <span class="cs-tag">Client website · OJ Does Fitness</span><h3>OJ Shredz</h3>
+            <p>A conversion-first site that turns a coach's Instagram followers into paying clients.</p>
+            <div class="f-foot"><span class="f-open">Case study <span class="arr">→</span></span><span class="f-links"><a href="https://github.com/omkarpatilswork/OJ-DOES-FITNESS" target="_blank" rel="noopener">GitHub ↗</a></span></div>
+          </div>
+        </article>
+        <article class="pr" data-open="health-saathi" tabindex="0" role="button" aria-label="Open the Health Saathi case study" data-reveal>
+          <div class="pr-media pr-hs">
+            <div class="phone"><div class="screen"><img src="assets/hs-chat.webp" alt="" loading="lazy" style="height:100%;object-fit:cover;object-position:top"></div></div>
+            <div class="phone"><div class="screen"><img src="assets/hs-xplore.webp" alt="" loading="lazy" style="height:100%;object-fit:cover;object-position:top"></div></div>
+          </div>
+          <div class="pr-body">
+            <span class="cs-tag">Health-tech AI agent</span><h3>Health Saathi</h3>
+            <p>An LLM support agent for lab bookings that knows when to hand over to a human.</p>
+            <div class="f-foot"><span class="f-open">Case study <span class="arr">→</span></span><span class="f-links"><a href="https://github.com/omkarpatilswork/Health-Saathi-AI-Agent-v1" target="_blank" rel="noopener">GitHub ↗</a></span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ABOUT -->
   <section id="about" class="sec" style="padding-top:0">
@@ -1148,13 +1229,13 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
     </div>
   </div>
 
-  <div class="sheet" id="p-oj-fitness" role="dialog" aria-modal="true" aria-label="OJ Does Fitness case study" data-lenis-prevent hidden>
+  <div class="sheet" id="p-oj-fitness" role="dialog" aria-modal="true" aria-label="OJ Shredz case study" data-lenis-prevent hidden>
     <div class="sheet-bar"><button class="sb-close" type="button" id="close-oj-fitness">← All work</button><span class="sb-count"></span><button class="sb-next" type="button" id="next-oj-fitness"><span>Next: </span><b></b> →</button></div>
     <div class="wrap sheet-body">
       <div class="build">
         <div class="build-copy" data-reveal>
-          <div class="eyebrow">Client website · conversion-first</div>
-          <h3>OJ Does Fitness</h3>
+          <div class="eyebrow">Client website · OJ Does Fitness · conversion-first</div>
+          <h3>OJ Shredz</h3>
           <p class="lede">One link-in-bio that turns an online coach's Instagram followers into paying clients.</p>
           <ul>
             <li><span>Funnel</span>Hook, trust, proof (before/after slider), anchored three-tier pricing.</li>
@@ -1257,8 +1338,8 @@ html.sheet-open, html.sheet-open body{overflow:hidden}
   }
 
   /* ---------- case-study sheets ---------- */
-  var order = ['ezzbill','bijlee','goldloop','health-saathi','oj-fitness','specxy'];
-  var names = {'ezzbill':'EZZ BILL','bijlee':'Bijlee','goldloop':'GoldLoop','health-saathi':'Health Saathi','oj-fitness':'OJ Does Fitness','specxy':'Specxy'};
+  var order = ['ezzbill','bijlee','specxy','goldloop','oj-fitness','health-saathi'];
+  var names = {'ezzbill':'EZZ BILL','bijlee':'Bijlee','goldloop':'GoldLoop','health-saathi':'Health Saathi','oj-fitness':'OJ Shredz','specxy':'Specxy'};
   var current = null, lastTrigger = null;
   function sheetEl(id){ return document.getElementById('p-' + id); }
   function setClipFrom(el, trigger){
