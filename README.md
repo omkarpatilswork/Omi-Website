@@ -15,6 +15,23 @@
 
 ---
 
+## 2026 redesign
+
+The live homepage is now a hand-built static page, served at `/` by a rewrite in `next.config.mjs`.
+
+| Path | What it is |
+|---|---|
+| `public/index.html` | The current site (Naval hero, startups, itemised track record, experience, case studies, vibe-coded products) |
+| `public/assets/` | Optimised screenshots, photos and the EZZ BILL walkthrough video |
+| `public/versions/v1.html` … `v4.html` | Every redesign iteration, viewable at `/versions/v1.html` etc. |
+| `app/v0-classic/page.tsx` | The original v0 portfolio, still live at `/v0-classic` |
+
+Each iteration is also a git tag: `redesign-v1` to `redesign-v4`.
+
+Case studies open as overlays and have shareable links: `/#ezzbill`, `/#bijlee`, `/#specxy`, `/#goldloop`, `/#oj-fitness`, `/#health-saathi`.
+
+To edit the site, change `public/index.html` and push to `main`; Vercel redeploys automatically.
+
 ## What's inside
 
 | Section | What you'll find |
